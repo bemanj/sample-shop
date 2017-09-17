@@ -1,3 +1,5 @@
+import { HttpModule } from '@angular/http';
+import { CategoryPostService } from './services/category-post.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -25,6 +27,7 @@ import { UserService } from './services/user.service';
     DataTableModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    HttpModule,
     NgbModule.forRoot(),
   ],
   declarations: [
@@ -38,6 +41,7 @@ import { UserService } from './services/user.service';
     FormsModule,
     CustomFormsModule,
     DataTableModule,
+    HttpModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule.forRoot().ngModule,
@@ -47,6 +51,7 @@ import { UserService } from './services/user.service';
     AuthGuard,
     UserService,
     CategoryService,
+    CategoryPostService,
     ProductService,
     ShoppingCartService,
     OrderService
