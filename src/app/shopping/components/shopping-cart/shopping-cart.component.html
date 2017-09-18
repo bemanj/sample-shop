@@ -12,6 +12,7 @@
       <tr>
         <th></th>
         <th>Product</th>
+        <th>Unit price</th>
         <th class="text-center" style="width: 230px">Quantity</th>
         <th class="text-right" style="width: 200px">Price</th>
       </tr>
@@ -26,11 +27,14 @@
           {{ item.title }}
         </td>
         <td>
+          {{ item.price | currency:'Php':true }}
+        </td>
+        <td>
           <product-quantity [product]="item" [shopping-cart]="cart">
           </product-quantity>
         </td>
         <td class="text-right">
-          {{ item.totalPrice | currency:'USD':true }}
+          {{ item.totalPrice | currency:'Php':true }}
         </td>
       </tr>
     </tbody>
@@ -39,7 +43,8 @@
         <th></th>
         <th></th>
         <th></th>
-        <th class="text-right">{{ cart.totalPrice | currency:'USD':true }}</th>
+        <th></th>
+        <th class="text-right">{{ cart.totalPrice | currency:'Php':true }}</th>
       </tr>
       <tr>
         <th colspan="4">

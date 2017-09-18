@@ -1,4 +1,5 @@
-import { CategoryService } from '../../../../shared/services/category.service';
+// import { CategoryService } from '../../../../shared/services/category.service';
+import { CategoryPostService } from '../../../../shared/services/category-post.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -10,8 +11,12 @@ export class ProductFilterComponent implements OnInit {
   categories$;
   @Input('category') category;
 
-  constructor(categoryService: CategoryService) {
-    this.categories$ = categoryService.getAll();
+  // constructor(categoryService: CategoryService) {
+  constructor(categoryService: CategoryPostService) {
+    this.categories$ = categoryService.getAll()
+    .map(res => res.json())
+    .subscribe(name => this.categories$ = name);
+                                  
   }
 
   ngOnInit() {
