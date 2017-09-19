@@ -19,12 +19,12 @@ export class SalesReportComponent implements OnInit  {
     this.categorypostservice.getAll().subscribe(data => this.categories$ = data);
   }
 
-  save(orderHeader) { 
-    if (this.id) this.productService.update(this.id, product);
-    else this.productService.create(product);
+  // save(orderHeader) { 
+  //   if (this.id) this.productService.update(this.id, product);
+  //   else this.productService.create(product);
     
-    this.router.navigate(['/admin/products']);
-  }
+  //   this.router.navigate(['/admin/products']);
+  // }
      ngOnInit() {
     }
 }
