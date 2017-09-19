@@ -1,13 +1,61 @@
-<div class="sticky-top">
-  <div class="list-group">
-      <a
-        class="list-group-item list-group-item-action"
-        >All Categories</a>
-      <a 
-        *ngFor="let c of categories$" 
-        class="list-group-item list-group-item-action"
-        >
-        {{ c.name }} {{ c.category}}
-      </a>
+<div class="row">
+  <div class="col-3">
+    <div class="sticky-top">
+      <div class="list-group">
+          <a
+            class="list-group-item list-group-item-action"
+            >All Categories</a>
+          <a 
+            *ngFor="let c of categories$" 
+            class="list-group-item list-group-item-action"
+            >
+            {{ c.name }} {{ c.category}}
+          </a>
+        </div>
     </div>
+  </div>
+
+  <div class="col">
+    <form #f="ngForm" (ngSubmit)="save(f.value)">
+        <div class="form-group">
+            <label for="sonumber">Order Number</label>
+            <input #sonumber="ngModel" ngModel [(ngModel)]="orderHeader.sonumber" name="sonumber" id="sonumber" type="text" class="form-control" disabled>
+        </div>
+
+        <div class="form-group">
+            <label for="subtotal">Sub Total</label>
+            <input #subtotal="ngModel" ngModel [(ngModel)]="orderHeader.subtotal" name="subtotal" id="subtotal" type="text" class="form-control">
+            <div class="alert alert-danger" *ngIf="subtotal.touched && subtotal.invalid">
+              Sub total is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="taxamount">Tax amount</label>
+            <input #taxamount="ngModel" ngModel [(ngModel)]="orderHeader.taxamount" name="taxamount" id="taxamount" type="text" class="form-control">
+            <div class="alert alert-danger" *ngIf="taxamount.touched && taxamount.invalid">
+              Sub total is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="sofreight">Freight</label>
+            <input #sofreight="ngModel" ngModel [(ngModel)]="orderHeader.sofreight" name="sofreight" id="sofreight" type="text" class="form-control">
+            <div class="alert alert-danger" *ngIf="sofreight.touched && sofreight.invalid">
+              Sub total is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="socomment">Comment</label>
+            <input #socomment="ngModel" ngModel [(ngModel)]="orderHeader.socomment" name="socomment" id="socomment" type="text" class="form-control">
+            <div class="alert alert-danger" *ngIf="socomment.touched && socomment.invalid">
+              Sub total is required.
+            </div>
+        </div>
+
+
+
+    </form>
+  </div>
 </div>

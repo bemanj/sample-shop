@@ -1,5 +1,5 @@
 import { CategoryPostService } from './../../../shared/services/category-post.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, NgModule } from '@angular/core';
 
 @Component({
   selector: 'sales-report',
@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SalesReportComponent implements OnInit  {
   categories$;
+  orderHeader = {};
   // @Input('category') category;
 
   constructor(private categorypostservice: CategoryPostService) { 
@@ -18,6 +19,12 @@ export class SalesReportComponent implements OnInit  {
     this.categorypostservice.getAll().subscribe(data => this.categories$ = data);
   }
 
+  save(orderHeader) { 
+    if (this.id) this.productService.update(this.id, product);
+    else this.productService.create(product);
+    
+    this.router.navigate(['/admin/products']);
+  }
      ngOnInit() {
     }
 }

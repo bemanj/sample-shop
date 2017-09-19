@@ -21,6 +21,8 @@ export class CategoryPostService {
       // .map((res: Response) => res.json())
   }
 
+  
+
   private logResponse(res: Response) {
     console.log(res);
   }
