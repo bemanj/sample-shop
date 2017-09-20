@@ -7,15 +7,16 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class CategoryPostService {
 
-  private url = 'http://localhost:57483/api/'
+  private _url = 'http://localhost:57483/api/'
   private name;
   
   constructor(private http: Http) { }
   getAll() { 
         // console.log(this.http.get(this.url + 'category1'));
-     return this.http.get(this.url + 'category1')
+     return this.http.get(this._url + 'category1')
       .do(this.logResponse)
-      .map((res: Response) => res.json())
+      .map((res: Response) => res.json());
+      // .map((res: Response) => console.log(res.json()));
       // .map(this.extractData)
       // .do((res: Response) => console.log(res))
       // .map((res: Response) => res.json())
@@ -28,6 +29,6 @@ export class CategoryPostService {
   }
 
   private extractData(res: Response) {
-    return res.json();
+    // return ((res: Response) => console.log(res.json()));
   }
 }
