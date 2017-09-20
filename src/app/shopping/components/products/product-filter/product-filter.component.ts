@@ -16,7 +16,6 @@ export class ProductFilterComponent implements OnInit {
     this.categories$ = categoryService.getAll();
     // .map(res => res.json())
     // .subscribe(name => this.categories$ = name);
-                                  
   }
 
   ngOnInit() {
