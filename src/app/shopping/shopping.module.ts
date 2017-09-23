@@ -14,6 +14,7 @@ import { SalesReportComponent } from './components/sales-report/sales-report.com
 import { ShippingFormComponent } from './components/shipping-form/shipping-form.component';
 import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary/shopping-cart-summary.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { PrintFormComponent } from './components/print-form/print-form.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     MyOrdersComponent,
     ProductFilterComponent,
     ShoppingCartSummaryComponent,
-    ShippingFormComponent
+    ShippingFormComponent,
+    PrintFormComponent
   ]
 })
 export class ShoppingModule { }

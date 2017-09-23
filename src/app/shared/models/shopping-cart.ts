@@ -27,7 +27,7 @@ export class ShoppingCart {
 
   get taxAmount() {
     let tax = 0;
-    let taxPercent = 12;
+    let taxPercent = .12;
     tax = this.grossPrice * taxPercent;
     return tax;
   }
