@@ -14,12 +14,22 @@ export class SalesReportService {
   create(body) {
     // console.log(body);
         return this.http.post(this._url + 'SalesOrderHeaders/', body)
-        .subscribe(response => {
-          console.log(response.json);
-        });
-        // .map((res: Response) => res.json());
+        .do(this.logResponse)
+        .map((res: Response) => res.json());
       }
   
+  // sales orders
+  getAllSO() { 
+         return this.http.get(this._url + 'SalesOrderHeaders/')
+        .do(this.logResponse)
+        .map((res: Response) => res.json());
+  }
+
+  getAllTotalSales() { 
+    return this.http.get(this._url + 'SalesReport/')
+   .do(this.logResponse)
+   .map((res: Response) => res.json());
+  }
 
   private logResponse(res: Response) {
     console.log(res);
