@@ -13,8 +13,18 @@
       <td>{{ order.shipping.name }}</td>
       <td>{{ order.datePlaced | date}}</td>
       <td>
-        <a href="/order-success">View</a>
+        <a [routerLink]="['/print-form/', order.$key]">View</a>
       </td>
     </tr>
   </tbody> 
 </table>
+
+<!-- 
+<data-table-column
+[property]="'$key'"  
+>
+<ng-template #dataTableCell let-item="item">
+  <a [routerLink]="['/admin/products/', item.$key]">Edit</a>
+</ng-template>
+</data-table-column>
+ -->

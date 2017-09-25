@@ -1,3 +1,61 @@
-<p>
-  print-form works!
-</p>
+<div class="col">
+    <button 
+    class="btn btn-primary"
+    print-btn>Print</button>
+    
+</div>
+
+<form #f="ngForm" (ngSubmit)="save(f.value)">
+  <div print-section>
+    <div class="col-6">
+        <div class="col">
+            <label>SO Number: {{ order.$key }}</label>
+        </div>
+      <div class="col">
+          <label>Name: {{ order.shipping.name }}</label>
+      </div>
+      <div class="col">
+        <label for="">Address Line 1: {{ order.shipping.addressLine1 }}</label>
+      </div>
+      <div class="col">
+        <label for="">Address Line 2: {{ order.shipping.addressLine2 }}</label>
+      </div>
+      <div class="col">
+        <label for="">City: {{ order.shipping.city }}</label>
+      </div>
+      <div class="col">
+        <label for="">Date Placed: {{ order.datePlaced | date }}</label>
+      </div>
+      <div class="col">
+          <label for="">Gross Amount: {{ order.grossAmount }}</label>
+      </div>
+      <div class="col">
+          <label for="">Tax Amount: {{ order.taxAmount }}</label>
+        </div>
+      <div class="col">
+          <label for="">Discount Price: {{ order.discountPrice }}</label>
+      </div>
+      <div class="col">
+          <label for="">Net Price: {{ order.netPrice }}</label>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+      <table class="table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Quantity</th>
+              <th>Total Price</th>
+            </tr>
+          </thead> 
+          <tbody>
+            <!-- <tr *ngFor="let o of orderItems.products ">
+              <td>{{ o.title }}</td>
+              <td>{{ o.quantity }}</td>
+              <td>{{ o.totalPrice }}</td> 
+             </tr> -->
+          </tbody> 
+        </table>
+  </div>
+</form>

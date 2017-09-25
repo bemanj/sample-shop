@@ -29,6 +29,7 @@ import { PrintFormComponent } from './components/print-form/print-form.component
       { path: 'sales-report', component: SalesReportComponent, canActivate: [AuthGuard] },
       { path: 'sales-order', component: SalesOrderComponent, canActivate: [AuthGuard] },
       { path: 'sales-order-new', component: SalesOrderComponent, canActivate: [AuthGuard] },
+      { path: 'print-form/:id', component: PrintFormComponent, canActivate: [AuthGuard] },
     ])
   ],
   declarations: [
@@ -37,6 +38,7 @@ import { PrintFormComponent } from './components/print-form/print-form.component
     SalesOrderComponent,
     SalesOrderNewComponent,
     ShoppingCartComponent,
+    PrintFormComponent,
     CheckOutComponent,
     OrderSuccessComponent,
     MyOrdersComponent,

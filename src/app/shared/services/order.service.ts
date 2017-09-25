@@ -8,9 +8,6 @@ export class OrderService {
 totalSales = 0 ;
 
   constructor(private db: AngularFireDatabase, private shoppingCartService: ShoppingCartService) { 
-
-    
-
   }
 
   async placeOrder(order) {
@@ -24,23 +21,37 @@ totalSales = 0 ;
   }
 
   getSomething() {
+    let item = 0;
     return this.db.list('/orders', { preserveSnapshot: true})
     .map(
       async res => {
-            // do something here
-            res.forEach(res => {
-              res.val()['grossAmount']
-            });
-        },
-        err => {
+        // do something here
+        res.forEach(res => {
+          return item += res.val()['grossAmount']
+        });
+      },
+      err => {
             console.error(err);
-        }
+      }
     );
   }
 
   getTotalSales()  { 
     console.log ('test only ' + this.getSomething());
     return this.totalSales;
+  }
+
+  get(orderId) { 
+    return this.db.object('/orders/' + orderId);
+  }
+
+  getOrdersByOrderId(orderId: string) {
+    return this.db.list('/orders', {
+      query: {
+        orderByKey: true,
+        equalTo: orderId        
+      }
+    });
   }
 
   getOrdersByUser(userId: string) {
