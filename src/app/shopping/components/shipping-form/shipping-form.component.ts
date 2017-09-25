@@ -31,6 +31,13 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
     this.userSubscription.unsubscribe();
   }
 
+  cartSummary() {
+    alert('GP '+ this.cart.grossPrice
+              +' TA '+ this.cart.taxAmount
+              +' DP '+ this.cart.discountPrice
+              +' NP ' + this.cart.totalPrice);
+  }
+
   async placeOrder() {
     let order = new Order(this.userId, this.shipping, this.cart);
     let result = await this.orderService.placeOrder(order);

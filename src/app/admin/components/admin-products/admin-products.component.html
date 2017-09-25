@@ -20,7 +20,41 @@
     [resizable]="true"
   >
   </data-table-column>
-  
+
+  <data-table-column
+  [property]="'unitsinstock'"  
+  [header]="'Stocks Qty'"
+  [sortable]="true"
+  [resizable]="true"
+  >
+  </data-table-column>
+
+
+  <data-table-column
+  [property]="'quantityperunit'"  
+  [header]="'Quantity Per Unit'"
+  [sortable]="true"
+  [resizable]="true"
+  >
+  </data-table-column>
+
+
+  <data-table-column
+  [property]="'unitsonorder'"  
+  [header]="'Units on Order'"
+  [sortable]="true"
+  [resizable]="true"
+  >
+  </data-table-column>
+
+  <data-table-column
+  [property]="'reorderlevel'"  
+  [header]="'Reorder Level'"
+  [sortable]="true"
+  [resizable]="true"
+  >
+  </data-table-column>
+
   <data-table-column
     [property]="'price'"  
     [header]="'Price'"
@@ -28,7 +62,7 @@
     [resizable]="true"
   >
     <ng-template #dataTableCell let-item="item">
-      {{ item.price | currency:'USD':true }}
+      {{ item.price | currency:'PhP':true }}
     </ng-template>
   </data-table-column>
 

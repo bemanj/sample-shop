@@ -30,7 +30,6 @@ export class ShoppingCartService {
     this.db.object('/shopping-carts/' + cartId + '/items').remove();
   }
   
-
   private create() { 
     return this.db.list('/shopping-carts').push({
       dateCreated: new Date().getTime()

@@ -42,7 +42,42 @@
       <tr>
         <th></th>
         <th></th>
+        <th class="text-right">Gross Amount</th>
+        <th></th> 
+        <th class="text-right">{{ cart.grossPrice | currency:'Php':true }}</th>
+      </tr>
+      <tr>
         <th></th>
+        <th></th>
+        <th class="text-right">Tax Amount</th>
+        <th class="text-right"><input type="number" class="text-right" placeholder="12%" disabled></th>
+        <th class="text-right">{{ cart.taxAmount | currency:'Php':true }}</th>
+      </tr>
+      <!-- <tr>
+        <th></th>
+        <th></th>
+        <th class="text-right">Freight Amount</th>
+        <th><input type="number" class="text-right" placeholder="0.00"></th>
+        <th class="text-right"></th>
+      </tr> -->
+      <tr>
+          <th></th>
+          <th></th>
+          <th class="text-right">Freight Amount</th>
+          <th class="text-right"><input type="number" class="text-right" placeholder="0.00" disabled></th>
+          <th class="text-right">PHP0.00</th>
+      </tr>
+      <tr>
+        <th></th>
+        <th></th>
+        <th class="text-right">Discount Price</th>
+        <th class="text-right"><input #discountprice="ngModel" [(ngModel)]="cart.discountprice" id="discountprice" type="number" class="text-right" placeholder="0.00"></th>
+        <th class="text-right">{{ cart.discountPrice | currency:'Php':true }}</th>
+      </tr>
+      <tr>
+        <th></th>
+        <th></th>
+        <th>Net Price:</th>
         <th></th>
         <th class="text-right">{{ cart.totalPrice | currency:'Php':true }}</th>
       </tr>
