@@ -1,3 +1,4 @@
+import { ProductListService } from './services/product-list.service';
 import { PrintService } from './services/print.service';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -57,6 +58,7 @@ import { UserService } from './services/user.service';
     PrintService,
     SalesReportService,
     ProductService,
+    ProductListService,
     ShoppingCartService,
     OrderService
   ]
