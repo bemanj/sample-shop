@@ -43,8 +43,9 @@
             <ng-container *ngIf="appUser.isAdmin">
               <a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
               <a class="dropdown-item" routerLink="/admin/products">Manage Products</a>
-              
+              <a class="dropdown-item" routerLink="/admin/product-list">View Product List</a>
             </ng-container>
+            <a class="dropdown-item" routerLink="/sales-order">Sales Order</a>
             <a class="dropdown-item" (click)="logout()">Log Out</a>
           </div>
         </li>

@@ -1,3 +1,4 @@
+import { ProductListComponent } from './../admin/components/product-list/product-list/product-list.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from 'shared/services/auth-guard.service';
