@@ -1,0 +1,124 @@
+<p>inventory list works</p>
+<!-- <!-- 
+<p>
+  <a routerLink="/admin/products/new" class="btn btn-primary">New Product</a>
+</p>
+<p>
+  <input 
+    #query
+    (keyup)="filter(query.value)"
+    type="text" class="form-control" placeholder="Search...">
+</p>
+ -->
+
+<data-table
+  [items]="items"
+  [itemCount]="itemCount"
+  (reload)="reloadItems($event)">
+  <data-table-column
+    [property]="'PONumber'"  
+    [header]="'PO Number'"
+    [sortable]="true"
+    [resizable]="true"
+  >
+  </data-table-column>
+
+  <data-table-column
+  [property]="'StockId'"  
+  [header]="'Stocks Id'"
+  [sortable]="true"
+  [resizable]="true"
+  >
+  </data-table-column>
+
+
+  <data-table-column
+  [property]="'SupplierId'"  
+  [header]="'Supplier Id'"
+  [sortable]="true"
+  [resizable]="true"
+  >
+  </data-table-column>
+
+
+  <data-table-column
+  [property]="'ProductId'"  
+  [header]="'Product Id'"
+  [sortable]="true"
+  [resizable]="true"
+  >
+  </data-table-column>
+
+  <data-table-column
+  [property]="'Brand'"  
+  [header]="'Brand'"
+  [sortable]="true"
+  [resizable]="true"
+  >
+  </data-table-column>
+
+  <data-table-column
+  [property]="'Quantity'"  
+  [header]="'Quantity'"
+  [sortable]="true"
+  [resizable]="true"
+  >
+  </data-table-column>
+
+  <data-table-column
+  [property]="'Price'"  
+  [header]="'Price'"
+  [sortable]="true"
+  [resizable]="true"
+>
+  <ng-template #dataTableCell let-item="item">
+    {{ item.Price | currency:'PhP':true }}
+  </ng-template>
+</data-table-column>
+
+<data-table-column
+[property]="'AcquisitionPrice'"  
+[header]="'Acquisition Price'"
+[sortable]="true"
+[resizable]="true"
+>
+<ng-template #dataTableCell let-item="item">
+  {{ item.AcquisitionPrice | currency:'PhP':true }}
+</ng-template>
+</data-table-column>
+
+  <data-table-column
+  [property]="'DateDelivered'"  
+  [header]="'Date Delivered'"
+  [sortable]="true"
+  [resizable]="true"
+  >
+  </data-table-column>
+
+  <data-table-column
+  [property]="'DateDisposed'"  
+  [header]="'Date Disposed  '"
+  [sortable]="true"
+  [resizable]="true"
+  >
+  </data-table-column>
+
+  <data-table-column
+  [property]="'PutAwayLocation'"  
+  [header]="'Put Away Location'"
+  [sortable]="true"
+  [resizable]="true"
+  >
+  </data-table-column>
+
+  <!-- <data-table-column
+    [property]="'$key'"  
+  >
+    <ng-template #dataTableCell let-item="item">
+      <a [routerLink]="['/admin/products/', item.$key]">Edit</a>
+    </ng-template>
+  </data-table-column>
+ -->
+</data-table>
+
+ -->

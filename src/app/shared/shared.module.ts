@@ -1,5 +1,3 @@
-import { ProductListService } from './services/product-list.service';
-import { PrintService } from './services/print.service';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -16,7 +14,10 @@ import { AuthGuard } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { CategoryPostService } from './services/category-post.service';
 import { CategoryService } from './services/category.service';
+import { InventoryListService } from './services/inventory-list.service';
 import { OrderService } from './services/order.service';
+import { PrintService } from './services/print.service';
+import { ProductListService } from './services/product-list.service';
 import { ProductService } from './services/product.service';
 import { SalesReportService } from './services/sales-report.service';
 import { ShoppingCartService } from './services/shopping-cart.service';
@@ -60,7 +61,8 @@ import { UserService } from './services/user.service';
     ProductService,
     ProductListService,
     ShoppingCartService,
-    OrderService
+    OrderService,
+    InventoryListService
   ]
 })
 export class SharedModule { }

@@ -16,6 +16,8 @@ import { ShippingFormComponent } from './components/shipping-form/shipping-form.
 import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary/shopping-cart-summary.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { PrintFormComponent } from './components/print-form/print-form.component';
+import { InventoryStocksComponent } from './components/inventory-stocks/inventory-stocks.component';
+import { InventoryListComponent } from './components/inventory-list/inventory-list.component';
 
 
 @NgModule({
@@ -31,6 +33,8 @@ import { PrintFormComponent } from './components/print-form/print-form.component
       { path: 'sales-order', component: SalesOrderComponent, canActivate: [AuthGuard] },
       { path: 'sales-order-new', component: SalesOrderComponent, canActivate: [AuthGuard] },
       { path: 'print-form/:id', component: PrintFormComponent, canActivate: [AuthGuard] },
+      { path: 'inventory-stocks', component: InventoryStocksComponent, canActivate: [AuthGuard] },
+      { path: 'inventory-list', component: InventoryListComponent, canActivate: [AuthGuard] },
     ])
   ],
   declarations: [
@@ -46,7 +50,9 @@ import { PrintFormComponent } from './components/print-form/print-form.component
     ProductFilterComponent,
     ShoppingCartSummaryComponent,
     ShippingFormComponent,
-    PrintFormComponent
+    PrintFormComponent,
+    InventoryStocksComponent,
+    InventoryListComponent
   ]
 })
 export class ShoppingModule { }
