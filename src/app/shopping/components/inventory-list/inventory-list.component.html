@@ -1,15 +1,13 @@
-<p>inventory list works</p>
-<!-- <!-- 
 <p>
-  <a routerLink="/admin/products/new" class="btn btn-primary">New Product</a>
+  <a routerLink="/inventory-stocks/new" class="btn btn-primary">New Stock</a>
 </p>
-<p>
+<!-- <p>
   <input 
     #query
     (keyup)="filter(query.value)"
     type="text" class="form-control" placeholder="Search...">
-</p>
- -->
+</p> -->
+
 
 <data-table
   [items]="items"
@@ -93,6 +91,9 @@
   [sortable]="true"
   [resizable]="true"
   >
+  <ng-template #dataTableCell let-item="item">
+    {{ item.DateDelivered | date }}
+  </ng-template>
   </data-table-column>
 
   <data-table-column
@@ -101,6 +102,9 @@
   [sortable]="true"
   [resizable]="true"
   >
+  <ng-template #dataTableCell let-item="item">
+    {{ item.DateDisposed | date }}
+  </ng-template>
   </data-table-column>
 
   <data-table-column

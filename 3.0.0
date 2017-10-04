@@ -1,0 +1,6 @@
+oshop@0.0.0 C:\Users\rober\source\repos\organic-shop-master\organic-shop-master
++-- UNMET PEER DEPENDENCY @angular/compiler@4.4.1
++-- UNMET PEER DEPENDENCY @angular/core@4.4.1
++-- jquery@3.2.1 
+`-- UNMET PEER DEPENDENCY popper.js@^1.11.0
+

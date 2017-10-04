@@ -33,7 +33,8 @@ import { InventoryListComponent } from './components/inventory-list/inventory-li
       { path: 'sales-order', component: SalesOrderComponent, canActivate: [AuthGuard] },
       { path: 'sales-order-new', component: SalesOrderComponent, canActivate: [AuthGuard] },
       { path: 'print-form/:id', component: PrintFormComponent, canActivate: [AuthGuard] },
-      { path: 'inventory-stocks', component: InventoryStocksComponent, canActivate: [AuthGuard] },
+      { path: 'inventory-stocks/new', component: InventoryStocksComponent, canActivate: [AuthGuard] },
+      { path: 'inventory-stocks/:id', component: InventoryStocksComponent, canActivate: [AuthGuard] },
       { path: 'inventory-list', component: InventoryListComponent, canActivate: [AuthGuard] },
     ])
   ],

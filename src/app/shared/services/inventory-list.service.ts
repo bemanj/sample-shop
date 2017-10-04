@@ -25,9 +25,12 @@ export class InventoryListService {
     console.log(res);
   }
 
-  // get(productId) { 
-  //   return this.db.object('/products/' + productId);
-  // }
+  get(inventoryId) { 
+    return this.http.get(this._url + 'inventorystocks/' + inventoryId)
+    .do(this.logResponse)
+    .map((res: Response) => res.json());
+ 
+  }
 
   // update(productId, product) { 
   //   return this.db.object('/products/' + productId).update(product);

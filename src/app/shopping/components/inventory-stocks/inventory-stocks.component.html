@@ -1,3 +1,129 @@
-<p>
-  inventory-stocks works!
-</p>
+
+<div class="row">
+  <div class="col-md-6">
+    <form #f="ngForm" (ngSubmit)="save(f.value)">
+        <div class="form-group">
+          <label for="PONumber">PO Number</label>
+          <input #ponumber="ngModel" [(ngModel)]="inventory.PONumber" name="ponumber" id="ponumber" type="number" class="form-control" required>
+          <!-- <div class="alert alert-danger" *ngIf="PONumber.touched && PONumber.invalid">
+            PO Number is required.
+          </div> -->
+        </div>        
+
+        <div class="form-group">
+          <label for="StockId">Stock Number</label>
+          <input #stockId="ngModel" [(ngModel)]="inventory.StockId" name="stockId" id="stockId" type="number" class="form-control" required>
+          <!-- <div class="alert alert-danger" *ngIf="StockId.touched && StockId.invalid">
+            Stock Number is required.
+          </div> -->
+        </div>        
+
+        <div class="form-group">
+          <label for="supplierid">Supplier ID</label>
+          <input #supplierid="ngModel" [(ngModel)]="inventory.SupplierId" name="supplierid" id="supplierid" type="number" class="form-control" required>
+          <!-- <div class="alert alert-danger" *ngIf="SupplierId.touched && PONumber.invalid">
+            Supplier ID is required.
+          </div> -->
+        </div>        
+
+        <div class="form-group">
+          <label for="productid">Product ID</label>
+          <input #productid="ngModel" [(ngModel)]="inventory.ProductId" name="productid" id="productid" type="number" class="form-control" required>
+          <!-- <div class="alert alert-danger" *ngIf="ProductId.touched && ProductId.invalid">
+            Product ID is required.
+          </div> -->
+        </div>        
+
+        <div class="form-group">
+          <label for="brand">brand</label>
+          <input #brand="ngModel" [(ngModel)]="inventory.Brand" name="brand" id="brand" type="text" class="form-control" required>
+          <!-- <div class="alert alert-danger" *ngIf="Brand.touched && Brand.invalid">
+            Brand is required.
+          </div> -->
+        </div>        
+
+        <div class="row">
+          <div class="col-4">
+              <div class="form-group">
+                  <label for="price">Price</label>
+                  <div class="input-group">
+                    <span class="input-group-addon">PhP</span>
+                    <input #price="ngModel" [(ngModel)]="inventory.Price" name="price" id="price" type="number" class="form-control" required [min]="0">
+                  </div>
+                  <!-- <div class="alert alert-danger" *ngIf="Price.touched && Price.invalid">
+                    <div *ngIf="Price.errors.required">Price is required.</div>
+                    <div *ngIf="Price.errors.min">Price should be 0 or higher.</div>
+                  </div> -->
+              </div>        
+          </div>
+        </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label for="quantity">Quantity In Stock</label>
+              <div class="input-group">
+                <input #quantity="ngModel" [(ngModel)]="inventory.Quantity" name="quantity" id="quantity" type="number" class="form-control" placeholder="0" required [min]="0">
+              </div>
+              <!-- <div class="alert alert-danger" *ngIf="Quantity.touched && Quantity.invalid">
+                <div *ngIf="Quantity.errors.required">Quantity in stock is required.</div>
+                <div *ngIf="Quantity.errors.min">Quantity in stock should be 0 or higher.</div>
+              </div> -->
+            </div>
+          </div>  
+        
+        <div class="row">
+          <div class="col-4">
+              <div class="form-group">
+                  <label for="acquisitionprice">Acquisition Price</label>
+                  <div class="input-group">
+                    <span class="input-group-addon">PhP</span>
+                    <input #acquisitionprice="ngModel" [(ngModel)]="inventory.AcquisitionPrice" name="acquisitionprice" id="acquisitionprice" type="number" class="form-control" required [min]="0">
+                  </div>
+                  <!-- <div class="alert alert-danger" *ngIf="AcquisitionPrice.touched && AcquisitionPrice.invalid">
+                    <div *ngIf="AcquisitionPrice.errors.required">Acquisition Price is required.</div>
+                    <div *ngIf="AcquisitionPrice.errors.min">Acquisition Price should be 0 or higher.</div>
+                  </div> -->
+                </div>        
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4">
+              <div class="form-group">
+                  <label for="DateDelivered">Date Delivered</label>
+                  <div class="input-group">
+                      <input name="DateDelivered" [value]="inventory.DateDelivered | date: 'short'" [(ngModel)]="inventory.DateDelivered" dateTimePicker />
+                  </div>
+                  <!-- <div class="alert alert-danger" *ngIf="DateDelivered.touched && DateDelivered.invalid">
+                    Date Delivered is required.
+                  </div> -->
+              </div>        
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="DateDisposed">Date Delivered</label>
+                    <div class="input-group">
+                        <input name="DateDisposed" [value]="inventory.DateDisposed | date: 'short'" [(ngModel)]="inventory.DateDisposed" dateTimePicker />
+                    </div>
+                    <!-- <div class="alert alert-danger" *ngIf="DateDelivered.touched && DateDelivered.invalid">
+                      Date Delivered is required.
+                    </div> -->
+                </div>        
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="PutAwayLocation">Put Away Location</label>
+            <input #PutAwayLocation="ngModel" [(ngModel)]="inventory.PutAwayLocation" name="PutAwayLocation" id="PutAwayLocation" type="number" class="form-control" required>
+            <!-- <div class="alert alert-danger" *ngIf="PutAwayLocation.touched && PutAwayLocation.invalid">
+              Put Away Location is required.
+            </div> -->
+          </div>        
+            
+        <button [disabled]="!f.valid" class="btn btn-primary">Save</button>
+        <button *ngIf="id" type="button" (click)="delete()" class="btn btn-danger">Delete</button>
+      </form>    
+  </div>
+</div>
