@@ -33,14 +33,14 @@ export class InventoryStocksComponent implements OnInit {
     // alert('test save function');
     var date = new Date();
       var invdata = {
-           PONumber: inventory.ponumber
-        , StockId: inventory.stockid
-        , SupplierId: inventory.supplierid
-        , ProductId: inventory.productid
-        , Brand: inventory.brand
-        , Quantity: inventory.quantity
-        , Price: inventory.price
-        , AcquisitionPrice: inventory.acquisitionprice
+           PONumber: inventory.PONumber
+        , StockId: inventory.StockId
+        , SupplierId: inventory.SupplierId
+        , ProductId: inventory.ProductId
+        , Brand: inventory.Brand
+        , Quantity: inventory.Quantity
+        , Price: inventory.Price
+        , AcquisitionPrice: inventory.AcquisitionPrice
         , DateDelivered: '05/10/2017'
         , DateDisposed: '05/10/2017'
         , ModifiedDate: '05/10/2017'
@@ -50,15 +50,17 @@ export class InventoryStocksComponent implements OnInit {
         , PutAwayLocation: 1
       }
       // console.log(invdata);
+      console.log('id ' + this.id);
        if (this.id) this.inventoryService.update(this.id, invdata);
        else this.inventoryService.create(invdata).subscribe(data => this.inventories$ = data);
+       this.router.navigate(['/inventory-list']);
       // console.log(this.soNumber$);
     }
 
   delete() {
     if (!confirm('Are you sure you want to delete this product?')) return;
     
-    // this.productService.delete(this.id);
+    this.inventoryService.delete(this.id);
     this.router.navigate(['/inventory-list']);
   }
 

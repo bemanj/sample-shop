@@ -7,7 +7,7 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class CategoryPostService {
 
-  private _url = 'http://localhost:57483/api/'
+  private _url = 'http://localhost:64770/api/' //64770 //57483
   private name;
   
   constructor(private http: Http) { }
