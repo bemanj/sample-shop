@@ -33,14 +33,14 @@ export class InventoryStocksComponent implements OnInit {
     // alert('test save function');
     var date = new Date();
       var invdata = {
-           PONumber: inventory.PONumber
-        , StockId: inventory.StockId
-        , SupplierId: inventory.SupplierId
-        , ProductId: inventory.ProductId
-        , Brand: inventory.Brand
-        , Quantity: inventory.Quantity
-        , Price: inventory.Price
-        , AcquisitionPrice: inventory.AcquisitionPrice
+        PONumber: inventory.ponumber
+        , StockId: inventory.stockid
+        , SupplierId: inventory.supplierid
+        , ProductId: inventory.productid
+        , Brand: inventory.brand
+        , Quantity: inventory.quantity
+        , Price: inventory.price
+        , AcquisitionPrice: inventory.acquisitionprice
         , DateDelivered: '05/10/2017'
         , DateDisposed: '05/10/2017'
         , ModifiedDate: '05/10/2017'
@@ -49,9 +49,30 @@ export class InventoryStocksComponent implements OnInit {
         // , ModifiedDate: date
         , PutAwayLocation: 1
       }
+
+      var invput = {
+        id: this.id
+        , PONumber: inventory.ponumber
+        , StockId: inventory.stockid
+        , SupplierId: inventory.supplierid
+        , ProductId: inventory.productid
+        , Brand: inventory.brand
+        , Quantity: inventory.quantity
+        , Price: inventory.price
+        , AcquisitionPrice: inventory.acquisitionprice
+        , DateDelivered: '05/10/2017'
+        , DateDisposed: '05/10/2017'
+        , ModifiedDate: '05/10/2017'
+        // , DateDelivered: date
+        // , DateDisposed: date
+        // , ModifiedDate: date
+        , PutAwayLocation: 1
+      }
+
+      // this.inventoryService.create(invdata).subscribe(data => this.inventories$ = data);;
       // console.log(invdata);
-      console.log('id ' + this.id);
-       if (this.id) this.inventoryService.update(this.id, invdata);
+      // console.log('id ' + this.id);
+       if (this.id) this.inventoryService.update(this.id, invput);
        else this.inventoryService.create(invdata).subscribe(data => this.inventories$ = data);
        this.router.navigate(['/inventory-list']);
       // console.log(this.soNumber$);

@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ProductListService {
 
-  private _url = 'http://localhost:64770/api/' //64770 //57483
+  private _url = 'http://localhost:57483/api/' //64770 //64770
 
   constructor(private http: Http) { }
 

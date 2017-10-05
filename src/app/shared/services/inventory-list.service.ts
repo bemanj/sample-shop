@@ -6,7 +6,7 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class InventoryListService {
 
-  private _url = 'http://localhost:64770/api/' //64770 //57483
+  private _url = 'http://localhost:57483/api/' //64770 //57483
 
   constructor(private http: Http) { }
 
@@ -35,10 +35,13 @@ export class InventoryListService {
   }
 
   update(inventoryId, inventory) { 
-    this.http.put(this._url + 'inventorystocks/' + inventoryId, inventory);
+    this.http.put(this._url + 'inventorystocks/' + inventoryId,inventory)
+    .subscribe((res: Response) => res.json());;
   }
 
   delete(inventoryId) { 
-    this.http.delete(this._url + 'inventorystocks/' + inventoryId);
+    this.http.delete(this._url + 'inventorystocks/' + inventoryId)
+    .do(this.logResponse)
+    .subscribe((res: Response) => res.json());;
   }
 }
