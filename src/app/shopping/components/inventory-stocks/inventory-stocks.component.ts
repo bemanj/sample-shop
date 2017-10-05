@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { CategoryService } from '../../../shared/services/category.service';
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/take'; 
+import { Subscription } from 'rxjs/Subscription';
+
 
 @Component({
   selector: 'inventory-stocks',
@@ -11,7 +13,7 @@ import 'rxjs/add/operator/take';
   styleUrls: ['./inventory-stocks.component.css']
 })
 export class InventoryStocksComponent implements OnInit {
-  categories$;
+  inventories$;
   inventory = {}; 
   id;
   momentValue;
@@ -21,18 +23,37 @@ export class InventoryStocksComponent implements OnInit {
     private route: ActivatedRoute,
     private categoryService: CategoryService, 
     private inventoryService: InventoryListService) {
-    this.categories$ = categoryService.getAll();
+    this.inventories$ = inventoryService.getAll();
 
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id) this.inventoryService.get(this.id).take(1).subscribe(p => this.inventory = p);
   }
 
-  save(inventory) { 
-    // if (this.id) this.productService.update(this.id, product);
-    // else this.productService.create(product);
-    
-    this.router.navigate(['/admin/products']);
-  }
+  save(inventory) {
+    // alert('test save function');
+    var date = new Date();
+      var invdata = {
+           PONumber: inventory.ponumber
+        , StockId: inventory.stockid
+        , SupplierId: inventory.supplierid
+        , ProductId: inventory.productid
+        , Brand: inventory.brand
+        , Quantity: inventory.quantity
+        , Price: inventory.price
+        , AcquisitionPrice: inventory.acquisitionprice
+        , DateDelivered: '05/10/2017'
+        , DateDisposed: '05/10/2017'
+        , ModifiedDate: '05/10/2017'
+        // , DateDelivered: date
+        // , DateDisposed: date
+        // , ModifiedDate: date
+        , PutAwayLocation: 1
+      }
+      // console.log(invdata);
+       if (this.id) this.inventoryService.update(this.id, invdata);
+       else this.inventoryService.create(invdata).subscribe(data => this.inventories$ = data);
+      // console.log(this.soNumber$);
+    }
 
   delete() {
     if (!confirm('Are you sure you want to delete this product?')) return;

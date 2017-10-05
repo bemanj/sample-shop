@@ -85,8 +85,8 @@ export class SalesOrderComponent implements OnInit {
       }
       console.log(sodata);
       this.salesreportservice.create(sodata).subscribe(data => this.soNumber$ = data.SalesOrderNumber);
-      this.btn = 'CANCEL Sales Order';
-      // console.log(this.soNumber$);
+      //this.btn = 'CANCEL Sales Order';
+       console.log(this.soNumber$);
     }
   
   } 

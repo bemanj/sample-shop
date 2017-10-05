@@ -1,4 +1,4 @@
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
@@ -10,9 +10,12 @@ export class InventoryListService {
 
   constructor(private http: Http) { }
 
-  // create(product) { 
-  //   return this.db.list('/products').push(product);
-  // }
+  create(body) { 
+    console.log(body);
+    return this.http.post(this._url + 'inventorystocks', body)
+    .do(this.logResponse)
+    .map((res: Response) => res.json());
+  }
 
   getAll() { 
     // console.log(this.http.get(this.url + 'category1'));
@@ -29,12 +32,11 @@ export class InventoryListService {
     return this.http.get(this._url + 'inventorystocks/' + inventoryId)
     .do(this.logResponse)
     .map((res: Response) => res.json());
- 
   }
 
-  // update(productId, product) { 
-  //   return this.db.object('/products/' + productId).update(product);
-  // }
+  update(inventoryId, inventory) { 
+    this.http.put(this._url + 'inventorystocks/' + inventoryId, inventory);
+  }
 
   // delete(productId) { 
   //   return this.db.object('/products/' + productId).remove();

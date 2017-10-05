@@ -28,8 +28,8 @@ export class SalesReportComponent implements OnInit  {
 
   constructor(private categorypostservice: CategoryPostService, 
     private salesreportservice : SalesReportService) { 
-    this.getCategories();
-    this.getTotalSales();
+    // this.getCategories();
+    // this.getTotalSales();
 
     this.subscription = this.salesreportservice.getAllSO()
     .subscribe(salesReport => {
@@ -79,17 +79,28 @@ export class SalesReportComponent implements OnInit  {
       OrderDate: date,
       //, OnlineOrderFlag: true
       //, SalesOrderNumber: 'SO1'
-      SubTotal: orderHeader.soSubTotal,
-      TaxAmt: orderHeader.soTaxAmt,
-      Freight: orderHeader.soFreight,
+      SubTotal: 0,
+      TaxAmt: 0,
+      Freight: 0,
       //TotalDue: soTotalDue,
-      Comment: orderHeader.soComment,
+      Comment: 0,
       ModifiedDate: date
     }
     console.log(data);
     this.salesreportservice.create(data);
   } 
-
+  // var data = {
+  //   //SalesOrderID: 1
+  //   OrderDate: date,
+  //   //, OnlineOrderFlag: true
+  //   //, SalesOrderNumber: 'SO1'
+  //   SubTotal: orderHeader.soSubTotal,
+  //   TaxAmt: orderHeader.soTaxAmt,
+  //   Freight: orderHeader.soFreight,
+  //   //TotalDue: soTotalDue,
+  //   Comment: orderHeader.soComment,
+  //   ModifiedDate: date
+  // }
     getSalesReport() {
       
     }
