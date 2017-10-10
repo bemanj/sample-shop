@@ -6,7 +6,9 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class InventoryListService {
 
-  private _url = 'http://localhost:57483/api/' //64770 //57483
+  //'http://localhost/MNMSolutions.Web.Api/api/'
+  //'http://localhost:57483/api/'
+  private _url = 'http://localhost/MNMSolutions.Web.Api/api/' //64770 //57483
 
   constructor(private http: Http) { }
 
