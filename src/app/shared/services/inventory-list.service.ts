@@ -19,7 +19,7 @@ export class InventoryListService {
 
   getAll() { 
     // console.log(this.http.get(this.url + 'category1'));
-  return this.http.get(this._url + 'inventorystocks')
+  return this.http.get(this._url + 'inventoryview')
    .do(this.logResponse)
    .map((res: Response) => res.json());
   }

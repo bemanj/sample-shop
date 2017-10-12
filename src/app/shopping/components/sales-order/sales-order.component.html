@@ -27,7 +27,7 @@
       <div class="col-8">
           <div class="form-group">
             <h1>
-              Order Number: {{ soNumber$ }}
+              Order Number: {{ salesorder.SalesOrderNumber }}
             </h1>
         </div>
       </div>
@@ -100,9 +100,14 @@
       </div>
   </div>
     <!-- </form> -->
-    <order-detail></order-detail>
     <div class="col">Order Details
-        <order-detail></order-detail>
+        <order-detail
+        [master]="master"
+        [sonumber]="sonumber"
+        [salesorder]="salesorder">
+      </order-detail>
+    <order-detail></order-detail>
+    
     </div>
     
   </div>

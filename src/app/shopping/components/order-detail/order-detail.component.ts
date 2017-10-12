@@ -11,19 +11,14 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./order-detail.component.css']
 })
 export class OrderDetailComponent implements OnInit {
-  private _sonumber = '';
-
-  @Input() 
-  set sonumber(sonumber: string) {
-    this._sonumber = (sonumber && sonumber.trim()) || '<no SO set>';
-  }
-  get sonumber(): string { return this._sonumber; }
-
   inventory: InventoryList;
   subscription: Subscription;
   tableResource: DataTableResource<InventoryList>;
   items: InventoryList[] = [];
   itemCount: number;
+  @Input('master') masterName: string;
+  @Input('sonumber') soNumber: string;
+  @Input('salesorder') salesorder: SalesOrder;
 
   constructor(private inventoryList: InventoryListService ) { 
     this.subscription = this.inventoryList.getAll()
@@ -49,7 +44,6 @@ export class OrderDetailComponent implements OnInit {
   }
 
   add() {
-    console.log('SO :' + this.sonumber);
   }
 
   ngOnInit() {

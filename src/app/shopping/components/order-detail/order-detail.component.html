@@ -3,8 +3,15 @@
     #query
     (keyup)="filter(query.value)"
     type="text" class="form-control" placeholder="Search...">
-</p> -->
-
+</p> {{masterName}} -->
+<p>
+  <label>SO Number: {{ soNumber }}
+  </label>
+  <label>Master: {{masterName}}
+    </label>
+    <label>Sales Order ID: {{salesorder.SalesOrderID}}
+      </label>
+</p>
 
 <data-table
   [items]="items"
@@ -37,7 +44,7 @@
 
   <data-table-column
   [property]="'Quantity'"  
-  [header]="'Quantity'"
+  [header]="'Stock Quantity'"
   [sortable]="true"
   [resizable]="true"
   >

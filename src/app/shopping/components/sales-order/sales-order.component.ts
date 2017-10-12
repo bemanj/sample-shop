@@ -16,7 +16,7 @@ export class SalesOrderComponent implements OnInit {
   categories$;
   orderHeader = {};
   btn = 'New';
-  soNumber$;
+  soNumber$ = '';
   data = '';
   postStatus : any;
   salesReport: SalesReport[];
@@ -24,12 +24,16 @@ export class SalesOrderComponent implements OnInit {
   tableResource: DataTableResource<SalesReport>;
   items: SalesReport[] = [];
   itemCount: number;
-  sonumber = '';
+  sonumber;
+  salesorder: SalesOrder;
+  master;
 
   // @Input('category') category;
 
   constructor(private categorypostservice: CategoryPostService, 
     private salesreportservice : SalesReportService) { 
+
+      
       
   } 
 
@@ -67,9 +71,9 @@ export class SalesOrderComponent implements OnInit {
   //   this.categorypostservice.getAll().subscribe(data => this.categories$ = data);
   // }
 
-  save(item) {
+  save() {
     // alert('test save function');
-    if(item.text == 'CANCEL SO')
+    if(this.btn == 'CANCEL SO')
     {
         alert('Are you sure?');
     } else {
@@ -87,11 +91,14 @@ export class SalesOrderComponent implements OnInit {
         ModifiedDate: date
       }
       console.log(sodata);
-      this.salesreportservice.create(sodata).subscribe(data => this.soNumber$ = data.SalesOrderNumber);
-      item.text = 'CANCEL SO';
-      item.isDisabled = !item.isDisabled;
-      this.sonumber = this.soNumber$;
-       console.log(this.soNumber$);
+      this.salesreportservice.create(sodata).subscribe(data => 
+        this.salesorder = data
+      );
+      this.btn = 'CANCEL SO';
+      // item.isDisabled = !item.isDisabled;
+      this.master = 'Supermaster 12';
+      console.log(this.master + ' hey master');
+      //  console.log(this.soNumber$);
     }
   
   } 
@@ -101,6 +108,7 @@ export class SalesOrderComponent implements OnInit {
     }
 
      ngOnInit() {
+       
     }
 
     ngOnDestroy(){
