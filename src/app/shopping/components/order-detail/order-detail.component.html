@@ -10,35 +10,18 @@
   [items]="items"
   [itemCount]="itemCount"
   (reload)="reloadItems($event)">
-  <data-table-column
-    [property]="'PONumber'"  
-    [header]="'PO Number'"
-    [sortable]="true"
-    [resizable]="true"
-  >
-  </data-table-column>
 
   <data-table-column
-  [property]="'StockId'"  
-  [header]="'Stocks Id'"
+  [property]="'ProductName'"  
+  [header]="'Product'"
   [sortable]="true"
   [resizable]="true"
   >
   </data-table-column>
 
-
   <data-table-column
-  [property]="'SupplierId'"  
-  [header]="'Supplier Id'"
-  [sortable]="true"
-  [resizable]="true"
-  >
-  </data-table-column>
-
-
-  <data-table-column
-  [property]="'ProductId'"  
-  [header]="'Product Id'"
+  [property]="'CompanyName'"  
+  [header]="'Supplier'"
   [sortable]="true"
   [resizable]="true"
   >
@@ -65,11 +48,11 @@
   [header]="'Price'"
   [sortable]="true"
   [resizable]="true"
->
+  >
   <ng-template #dataTableCell let-item="item">
     {{ item.Price | currency:'PhP':true }}
   </ng-template>
-</data-table-column>
+  </data-table-column>
 
 <data-table-column
 [property]="'AcquisitionPrice'"  
@@ -82,41 +65,12 @@
 </ng-template>
 </data-table-column>
 
-  <data-table-column
-  [property]="'DateDelivered'"  
-  [header]="'Date Delivered'"
-  [sortable]="true"
-  [resizable]="true"
-  >
-  <ng-template #dataTableCell let-item="item">
-    {{ item.DateDelivered | date }}
-  </ng-template>
-  </data-table-column>
-
-  <data-table-column
-  [property]="'DateDisposed'"  
-  [header]="'Date Disposed  '"
-  [sortable]="true"
-  [resizable]="true"
-  >
-  <ng-template #dataTableCell let-item="item">
-    {{ item.DateDisposed | date }}
-  </ng-template>
-  </data-table-column>
-
-  <data-table-column
-  [property]="'PutAwayLocation'"  
-  [header]="'Put Away Location'"
-  [sortable]="true"
-  [resizable]="true"
-  >
-  </data-table-column>
-
+  
   <data-table-column
     [property]="'$id'"  
   >
     <ng-template #dataTableCell let-item="item">
-      <a [routerLink]="['/inventory-stocks/', item.$id]">Edit</a>
+      <a (click)='add()'>Add</a>
     </ng-template>
   </data-table-column>
 

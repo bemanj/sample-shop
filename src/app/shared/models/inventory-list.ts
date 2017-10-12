@@ -13,4 +13,7 @@ export interface InventoryList {
     DateDisposed: string;
     ModifiedDate: string;
     PutAwayLocation: string;
+    ProductName: string;
+    CompanyName: string;
+    CategoryID: number;
   }

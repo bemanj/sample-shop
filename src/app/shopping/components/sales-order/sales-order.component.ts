@@ -1,3 +1,4 @@
+import { SalesOrder } from '../../../shared/models/sales-order';
 import { Subscription } from 'rxjs/Subscription';
 import { SalesReport } from './../../../shared/models/sales-report';
 import { DataTableResource } from 'angular-4-data-table';
@@ -14,7 +15,7 @@ import { Component, OnInit, Input, NgModule } from '@angular/core';
 export class SalesOrderComponent implements OnInit {
   categories$;
   orderHeader = {};
-  btn = 'New Sales Order';
+  btn = 'New';
   soNumber$;
   data = '';
   postStatus : any;
@@ -23,11 +24,13 @@ export class SalesOrderComponent implements OnInit {
   tableResource: DataTableResource<SalesReport>;
   items: SalesReport[] = [];
   itemCount: number;
+  sonumber = '';
 
   // @Input('category') category;
 
   constructor(private categorypostservice: CategoryPostService, 
     private salesreportservice : SalesReportService) { 
+      
   } 
 
   // this.getCategories();
@@ -64,9 +67,9 @@ export class SalesOrderComponent implements OnInit {
   //   this.categorypostservice.getAll().subscribe(data => this.categories$ = data);
   // }
 
-  save() {
+  save(item) {
     // alert('test save function');
-    if(this.btn == 'CANCEL Sales Order')
+    if(item.text == 'CANCEL SO')
     {
         alert('Are you sure?');
     } else {
@@ -85,7 +88,9 @@ export class SalesOrderComponent implements OnInit {
       }
       console.log(sodata);
       this.salesreportservice.create(sodata).subscribe(data => this.soNumber$ = data.SalesOrderNumber);
-      //this.btn = 'CANCEL Sales Order';
+      item.text = 'CANCEL SO';
+      item.isDisabled = !item.isDisabled;
+      this.sonumber = this.soNumber$;
        console.log(this.soNumber$);
     }
   

@@ -1,7 +1,8 @@
+import { SalesOrder } from './../../../shared/models/sales-order';
 import { DataTableResource } from 'angular-4-data-table';
 import { InventoryListService } from './../../../shared/services/inventory-list.service';
 import { InventoryList } from './../../../shared/models/inventory-list';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
@@ -10,6 +11,14 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./order-detail.component.css']
 })
 export class OrderDetailComponent implements OnInit {
+  private _sonumber = '';
+
+  @Input() 
+  set sonumber(sonumber: string) {
+    this._sonumber = (sonumber && sonumber.trim()) || '<no SO set>';
+  }
+  get sonumber(): string { return this._sonumber; }
+
   inventory: InventoryList;
   subscription: Subscription;
   tableResource: DataTableResource<InventoryList>;
@@ -37,6 +46,10 @@ export class OrderDetailComponent implements OnInit {
 
     this.tableResource.query(params)
       .then(items => this.items = items);    
+  }
+
+  add() {
+    console.log('SO :' + this.sonumber);
   }
 
   ngOnInit() {

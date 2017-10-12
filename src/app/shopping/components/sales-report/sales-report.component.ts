@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { SalesReport } from './../../../shared/models/sales-report';
 import { DataTableResource } from 'angular-4-data-table';
@@ -27,7 +28,8 @@ export class SalesReportComponent implements OnInit  {
   // @Input('category') category;
 
   constructor(private categorypostservice: CategoryPostService, 
-    private salesreportservice : SalesReportService) { 
+    private salesreportservice : SalesReportService,
+    private router: Router) { 
     // this.getCategories();
     // this.getTotalSales();
 
@@ -73,22 +75,29 @@ export class SalesReportComponent implements OnInit  {
   
 
   save(orderHeader) {
-    var date = new Date();
-    var data = {
-      //SalesOrderID: 1
-      OrderDate: date,
-      //, OnlineOrderFlag: true
-      //, SalesOrderNumber: 'SO1'
-      SubTotal: 0,
-      TaxAmt: 0,
-      Freight: 0,
-      //TotalDue: soTotalDue,
-      Comment: 0,
-      ModifiedDate: date
-    }
-    console.log(data);
-    this.salesreportservice.create(data);
+    this.router.navigate(['/sales-order']);
   } 
+
+  // save(orderHeader) {
+    
+  //       this.router.navigate(['/inventory-list']);
+  //       var date = new Date();
+  //       var data = {
+  //         //SalesOrderID: 1
+  //         OrderDate: date,
+  //         //, OnlineOrderFlag: true
+  //         //, SalesOrderNumber: 'SO1'
+  //         SubTotal: 0,
+  //         TaxAmt: 0,
+  //         Freight: 0,
+  //         //TotalDue: soTotalDue,
+  //         Comment: 0,
+  //         ModifiedDate: date
+  //       }
+  //       console.log(data);
+  //       this.salesreportservice.create(data);
+  //     } 
+      
   // var data = {
   //   //SalesOrderID: 1
   //   OrderDate: date,
