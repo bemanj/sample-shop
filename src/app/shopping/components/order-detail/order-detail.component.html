@@ -77,7 +77,7 @@
     [property]="'$id'"  
   >
     <ng-template #dataTableCell let-item="item">
-      <a (click)='add()'>Add</a>
+      <a (click)='save(item)'>{{ item.Action }}</a>
     </ng-template>
   </data-table-column>
 

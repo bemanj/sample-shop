@@ -28,8 +28,8 @@ export class OrderDetailComponent implements OnInit {
     });
   }
 
-  private initializeTable(inventorList: InventoryList[]) {
-    this.tableResource = new DataTableResource(inventorList);
+  private initializeTable(inventoryList: InventoryList[]) {
+    this.tableResource = new DataTableResource(inventoryList);
     this.tableResource.query({ offset: 0 })
       .then(items => this.items = items);
     this.tableResource.count()
@@ -43,7 +43,7 @@ export class OrderDetailComponent implements OnInit {
       .then(items => this.items = items);    
   }
 
-  add() {
+  save() {
   }
 
   ngOnInit() {
