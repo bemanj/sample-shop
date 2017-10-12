@@ -6,9 +6,7 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class InventoryListService {
 
-  //'http://localhost/MNMSolutions.Web.Api/api/'
-  //'http://localhost:57483/api/'
-  private _url = 'http://localhost/MNMSolutions.Web.Api/api/' //64770 //57483
+  private _url = 'http://localhost:64770/api/' //64770 //57483
 
   constructor(private http: Http) { }
 
@@ -21,7 +19,7 @@ export class InventoryListService {
 
   getAll() { 
     // console.log(this.http.get(this.url + 'category1'));
-  return this.http.get(this._url + 'inventoryview')
+  return this.http.get(this._url + 'inventorystocks')
    .do(this.logResponse)
    .map((res: Response) => res.json());
   }
