@@ -27,19 +27,14 @@
   </data-table-column>
 
   <data-table-column
-  [property]="'CompanyName'"  
-  [header]="'Supplier'"
+  [property]="'UnitPrice'"  
+  [header]="'Price'"
   [sortable]="true"
   [resizable]="true"
   >
-  </data-table-column>
-
-  <data-table-column
-  [property]="'Brand'"  
-  [header]="'Brand'"
-  [sortable]="true"
-  [resizable]="true"
-  >
+  <ng-template #dataTableCell let-item="item">
+    {{ item.UnitPrice | currency:'PhP':true }}
+  </ng-template>
   </data-table-column>
 
   <data-table-column
@@ -51,33 +46,33 @@
   </data-table-column>
 
   <data-table-column
-  [property]="'Price'"  
-  [header]="'Price'"
+  [property]="'Discount'"  
+  [header]="'Discount'"
   [sortable]="true"
   [resizable]="true"
   >
   <ng-template #dataTableCell let-item="item">
-    {{ item.Price | currency:'PhP':true }}
+    {{ item.Discount | currency:'PhP':true }}
   </ng-template>
   </data-table-column>
 
-<data-table-column
-[property]="'AcquisitionPrice'"  
-[header]="'Acquisition Price'"
-[sortable]="true"
-[resizable]="true"
->
-<ng-template #dataTableCell let-item="item">
-  {{ item.AcquisitionPrice | currency:'PhP':true }}
-</ng-template>
-</data-table-column>
-
+  <data-table-column
+  [property]="'TotalAmount'"  
+  [header]="'Amount'"
+  [sortable]="true"
+  [resizable]="true"
+  >
+  <ng-template #dataTableCell let-item="item">
+    {{ item.TotalAmount | currency:'PhP':true }}
+  </ng-template>
+  </data-table-column>
   
   <data-table-column
     [property]="'$id'"  
   >
     <ng-template #dataTableCell let-item="item">
-      <button (click)='save(item.$id)'>Add</button>
+      <button (click)='save(item.$id)'>Update</button>
+      <button (click)='remove(item.$id)'>Remove</button>
     </ng-template>
   </data-table-column>
 

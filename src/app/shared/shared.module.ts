@@ -1,3 +1,4 @@
+import { OrderDetailService } from './services/order-detail.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
@@ -67,6 +68,7 @@ import { UserService } from './services/user.service';
     CategoryPostService,
     PrintService,
     SalesReportService,
+    OrderDetailService,
     ProductService,
     ProductListService,
     ShoppingCartService,
