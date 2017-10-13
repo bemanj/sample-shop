@@ -1,7 +1,8 @@
+import { OrderDetailService } from '../../../shared/services/order-detail.service';
+import { OrderDetailList } from '../../../shared/models/order-detail';
 import { SalesOrder } from './../../../shared/models/sales-order';
 import { DataTableResource } from 'angular-4-data-table';
 import { InventoryListService } from './../../../shared/services/inventory-list.service';
-import { InventoryList } from './../../../shared/models/inventory-list';
 import { Component, OnInit, Input } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -11,25 +12,25 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./order-detail.component.css']
 })
 export class OrderDetailComponent implements OnInit {
-  inventory: InventoryList;
+  orderdetails: OrderDetailList;
   subscription: Subscription;
-  tableResource: DataTableResource<InventoryList>;
-  items: InventoryList[] = [];
+  tableResource: DataTableResource<OrderDetailList>;
+  items: OrderDetailList[] = [];
   itemCount: number;
   @Input('master') masterName: string;
   @Input('sonumber') soNumber: string;
   @Input('salesorder') salesorder: SalesOrder[] = [];
 
-  constructor(private inventoryList: InventoryListService ) { 
-    this.subscription = this.inventoryList.getAll()
-    .subscribe(inventory => {
-      this.inventory = inventory;
-      this.initializeTable(inventory);
+  constructor(private orderdetailList: OrderDetailService ) { 
+    this.subscription = this.orderdetailList.getAll()
+    .subscribe(orders => {
+      this.orderdetails = orders;
+      this.initializeTable(orders);
     });
   }
 
-  private initializeTable(inventoryList: InventoryList[]) {
-    this.tableResource = new DataTableResource(inventoryList);
+  private initializeTable(orderdetailList: OrderDetailList[]) {
+    this.tableResource = new DataTableResource(orderdetailList);
     this.tableResource.query({ offset: 0 })
       .then(items => this.items = items);
     this.tableResource.count()
