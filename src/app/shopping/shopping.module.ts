@@ -1,3 +1,4 @@
+import { ProductSelectionComponent } from '../shopping/components/product-selection/product-selection.component';
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 import { ProductListComponent } from './../admin/components/product-list/product-list/product-list.component';
 import { NgModule } from '@angular/core';
@@ -38,6 +39,7 @@ import { InventoryListComponent } from './components/inventory-list/inventory-li
       { path: 'inventory-stocks/:id', component: InventoryStocksComponent, canActivate: [AuthGuard] },
       { path: 'inventory-list', component: InventoryListComponent, canActivate: [AuthGuard] },
       { path: 'order-detail', component: OrderDetailComponent, canActivate: [AuthGuard] },
+      { path: 'product-selection', component: ProductSelectionComponent, canActivate: [AuthGuard] },
     ])
   ],
   declarations: [
@@ -56,6 +58,7 @@ import { InventoryListComponent } from './components/inventory-list/inventory-li
     PrintFormComponent,
     InventoryStocksComponent,
     InventoryListComponent,
+    ProductSelectionComponent,
     OrderDetailComponent
   ]
 })
