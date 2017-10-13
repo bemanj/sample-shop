@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
 @Injectable()
-export class InventoryListService {
+export class SalesOrderdetailsService {
 
   // http://localhost/MNMSolutions.Web.Api
   // private _url = 'http://localhost:64770/api/' //64770 //57483

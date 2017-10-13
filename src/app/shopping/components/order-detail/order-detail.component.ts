@@ -18,7 +18,7 @@ export class OrderDetailComponent implements OnInit {
   itemCount: number;
   @Input('master') masterName: string;
   @Input('sonumber') soNumber: string;
-  @Input('salesorder') salesorder: SalesOrder;
+  @Input('salesorder') salesorder: SalesOrder[] = [];
 
   constructor(private inventoryList: InventoryListService ) { 
     this.subscription = this.inventoryList.getAll()
@@ -43,7 +43,8 @@ export class OrderDetailComponent implements OnInit {
       .then(items => this.items = items);    
   }
 
-  save() {
+  save(item) {
+    console.log('order detail ' + item  + 'sales order id: ' + this.salesorder);
   }
 
   ngOnInit() {

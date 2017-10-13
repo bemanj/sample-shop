@@ -25,7 +25,7 @@ export class SalesOrderComponent implements OnInit {
   items: SalesReport[] = [];
   itemCount: number;
   sonumber;
-  salesorder: SalesOrder;
+  salesorder: SalesOrder[]=[];
   master;
 
   // @Input('category') category;
