@@ -1,3 +1,5 @@
+import { ActivatedRoute, Router } from '@angular/router';
+import { OrderDetailService } from './../../../shared/services/order-detail.service';
 import { SelectedProduct } from './../../../shared/models/selected-product';
 import { ParentDialogComponent } from './../parent-dialog/parent-dialog.component';
 import { DialogService } from 'ng2-bootstrap-modal';
@@ -20,11 +22,17 @@ export class ProductSelectionComponent implements OnInit {
   items: InventoryList[] = [];
   itemCount: number;
   order;
+  data;
   @Input('master') masterName: string;
   @Input('sonumber') soNumber: string;
   @Input('salesorder') salesorder: SalesOrder[] = [];
+  private totalAmount = 0;
+  postData$;
 
   constructor(private inventoryList: InventoryListService,
+    private orderdetailService: OrderDetailService,
+    private route: ActivatedRoute,
+    private router: Router, 
     private dialogService:DialogService ) { 
     this.subscription = this.inventoryList.getAll()
     .subscribe(inventory => {
@@ -49,20 +57,43 @@ export class ProductSelectionComponent implements OnInit {
   }
 
   save(item) {
-    // alert('test save function');
-    var date = new Date();
-       // this.inventoryService.create(invdata).subscribe(data => this.inventories$ = data);;
-      // console.log(invdata);
-      // console.log('id ' + this.id);
-      //  this.inventoryService.create(invdata).subscribe(data => this.inventories$ = data);
-      //  this.router.navigate(['/inventory-list']);
-      // console.log(item.$id + ' qty ' + item.price);
-      if (item.OrderQuantity > 0 && !isNaN(item.OrderQuantity)) {
-        console.log('Amount :' + item.Price * item.OrderQuantity);
-      }
-      else{
-        alert('Invalid quantity :' + item.OrderQuantity);
-      }
+
+    
+    if (item.OrderQuantity > 0 && !isNaN(item.OrderQuantity)) {
+      
+      var postdata;
+      // console.log('Amount :' + item.Price * item.OrderQuantity);
+      this.route.paramMap
+      .subscribe(params => {
+        let id = params.get('id');
+
+        this.totalAmount = item.Price * item.OrderQuantity;
+
+        postdata = {
+          SalesOrderID: id
+          , StockId: item.StockId
+          , SalesOrderNumber: 'SO' + id
+          , ProductId: item.ProductId
+          , UnitPrice: item.Price
+          , UOM: item.UOM
+          , Quantity: item.OrderQuantity
+          , Discount: 0
+          , TotalAmount: this.totalAmount
+        }
+
+      });
+
+      this.orderdetailService.create(postdata).subscribe(data => this.postData$ = data);
+
+      this.router.navigate(['/order-details']);
+
+    }
+    else{
+      alert('Invalid quantity :' + item.OrderQuantity);
+    }
+
+    
+
       
     }
 

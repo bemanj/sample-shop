@@ -9,4 +9,20 @@ export class SalesOrder {
     Freight:number;
     TotalDue:number;
     Comment:string;
+
+     get SONum(){
+      return this.SONumber;
+    }
+
+     get SOId(){
+      return this.SalesOrderID;
+    }
+  }
+
+  export class SalesOrderData{
+    constructor(){
+      let sodata = new SalesOrder();
+      sodata.SONum;
+    }
+    
   }

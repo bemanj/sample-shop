@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { OrderDetailService } from '../../../shared/services/order-detail.service';
 import { OrderDetailList } from '../../../shared/models/order-detail';
 import { SalesOrder } from './../../../shared/models/sales-order';
@@ -21,12 +22,19 @@ export class OrderDetailComponent implements OnInit {
   @Input('sonumber') soNumber: string;
   @Input('salesorder') salesorder: SalesOrder[] = [];
 
-  constructor(private orderdetailList: OrderDetailService ) { 
-    this.subscription = this.orderdetailList.getAll()
-    .subscribe(orders => {
-      this.orderdetails = orders;
-      this.initializeTable(orders);
+  constructor(private orderdetailList: OrderDetailService,
+  private route: ActivatedRoute ) { 
+    this.route.paramMap
+    .subscribe(params => {
+      let id = params.get('id');
+      this.subscription = this.orderdetailList.get(id)
+      .subscribe(orders => {
+        this.orderdetails = orders;
+        this.initializeTable(orders);
+      });
     });
+    
+    
   }
 
   private initializeTable(orderdetailList: OrderDetailList[]) {
@@ -49,6 +57,7 @@ export class OrderDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   ngOnDestroy(){

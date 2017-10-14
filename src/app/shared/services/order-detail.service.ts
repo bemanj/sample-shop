@@ -31,7 +31,7 @@ export class OrderDetailService {
   }
 
   get(inventoryId) { 
-    return this.http.get(this._url + 'view_SalesOrderDetails/' + inventoryId)
+    return this.http.get(this._url + 'InventoryView/' + inventoryId)
     .do(this.logResponse)
     .map((res: Response) => res.json());
   }

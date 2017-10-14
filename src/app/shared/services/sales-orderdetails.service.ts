@@ -15,14 +15,14 @@ export class SalesOrderdetailsService {
 
   create(body) { 
     console.log(body);
-    return this.http.post(this._url + 'inventorystocks', body)
+    return this.http.post(this._url + 'SalesOrderDetails', body)
     .do(this.logResponse)
     .map((res: Response) => res.json());
   }
 
   getAll() { 
     // console.log(this.http.get(this.url + 'category1'));
-  return this.http.get(this._url + 'inventoryview')
+  return this.http.get(this._url + 'SalesOrderDetails')
    .do(this.logResponse)
    .map((res: Response) => res.json());
   }
@@ -32,18 +32,18 @@ export class SalesOrderdetailsService {
   }
 
   get(inventoryId) { 
-    return this.http.get(this._url + 'inventorystocks/' + inventoryId)
+    return this.http.get(this._url + 'SalesOrderDetails/' + inventoryId)
     .do(this.logResponse)
     .map((res: Response) => res.json());
   }
 
   update(inventoryId, inventory) { 
-    this.http.put(this._url + 'inventorystocks/' + inventoryId,inventory)
+    this.http.put(this._url + 'SalesOrderDetails/' + inventoryId,inventory)
     .subscribe((res: Response) => res.json());;
   }
 
   delete(inventoryId) { 
-    this.http.delete(this._url + 'inventorystocks/' + inventoryId)
+    this.http.delete(this._url + 'SalesOrderDetails/' + inventoryId)
     .do(this.logResponse)
     .subscribe((res: Response) => res.json());;
   }
