@@ -7,6 +7,7 @@ export interface InventoryList {
     ProductId: number;
     Brand: string;
     Quantity: number;
+    UOM: string;
     Price: number;
     AcquisitionPrice: number;
     DateDelivered: string;

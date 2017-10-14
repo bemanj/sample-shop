@@ -44,9 +44,16 @@ export class ProductSelectionComponent implements OnInit {
       .then(items => this.items = items);    
   }
 
-  save(item) {
-    console.log('order detail ' + item  + 'sales order id: ' + this.salesorder);
-  }
+  save(inventory) {
+    // alert('test save function');
+    var date = new Date();
+       // this.inventoryService.create(invdata).subscribe(data => this.inventories$ = data);;
+      // console.log(invdata);
+      // console.log('id ' + this.id);
+      //  this.inventoryService.create(invdata).subscribe(data => this.inventories$ = data);
+      //  this.router.navigate(['/inventory-list']);
+      // console.log(this.soNumber$);
+    }
 
   ngOnInit() {
   }

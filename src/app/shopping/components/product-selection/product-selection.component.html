@@ -72,12 +72,15 @@
   </ng-template>
   </data-table-column>
   
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Order Quantity" ng-model="item.orderQuantity" >   
+    </div>
     
     <data-table-column
       [property]="'$id'"  
     >
       <ng-template #dataTableCell let-item="item">
-        <button (click)='save(item.$id)'>Add</button>
+        <button (click)='save(item.$id)'>Select</button>
       </ng-template>
     </data-table-column>
   

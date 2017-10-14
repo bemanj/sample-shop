@@ -35,7 +35,7 @@
         </div>        
 
         <div class="form-group">
-          <label for="brand">brand</label>
+          <label for="brand">Brand</label>
           <input #brand="ngModel" [(ngModel)]="inventory.Brand" name="brand" id="brand" type="text" class="form-control" required>
           <!-- <div class="alert alert-danger" *ngIf="Brand.touched && Brand.invalid">
             Brand is required.
@@ -70,6 +70,14 @@
             </div>
           </div>  
         
+          <div class="form-group">
+            <label for="uom">UOM</label>
+            <input #uom="ngModel" [(ngModel)]="inventory.UOM" name="uom" id="uom" type="text" class="form-control" required>
+            <!-- <div class="alert alert-danger" *ngIf="UOM.touched && UOM.invalid">
+              UOM is required.
+            </div> -->
+          </div>        
+
         <div class="row">
           <div class="col-4">
               <div class="form-group">
