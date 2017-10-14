@@ -1,11 +1,5 @@
 export class SelectedProduct { 
-  datePlaced: number; 
-  grossAmount: number;
-  taxAmount: number;
-  freightAmount: number;
-  discountPrice: number;
-  netPrice: number;
-  items: any[];
+    OrderQuantity: number;
 
 //   constructor(public userId: string, public shipping: any, shoppingCart: ShoppingCart) {
 //     this.datePlaced = new Date().getTime();

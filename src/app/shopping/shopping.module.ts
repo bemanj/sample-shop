@@ -1,3 +1,4 @@
+import { ParentDialogComponent } from './components/parent-dialog/parent-dialog.component';
 import { ProductSelectionComponent } from '../shopping/components/product-selection/product-selection.component';
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 import { ProductListComponent } from './../admin/components/product-list/product-list/product-list.component';
@@ -40,6 +41,7 @@ import { InventoryListComponent } from './components/inventory-list/inventory-li
       { path: 'inventory-list', component: InventoryListComponent, canActivate: [AuthGuard] },
       { path: 'order-detail', component: OrderDetailComponent, canActivate: [AuthGuard] },
       { path: 'product-selection', component: ProductSelectionComponent, canActivate: [AuthGuard] },
+      { path: 'parent-dialog', component: ParentDialogComponent, canActivate: [AuthGuard] },
     ])
   ],
   declarations: [
@@ -59,7 +61,8 @@ import { InventoryListComponent } from './components/inventory-list/inventory-li
     InventoryStocksComponent,
     InventoryListComponent,
     ProductSelectionComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
+    ParentDialogComponent
   ]
 })
 export class ShoppingModule { }

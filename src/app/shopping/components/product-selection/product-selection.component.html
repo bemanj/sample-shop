@@ -49,7 +49,15 @@
     [resizable]="true"
     >
     </data-table-column>
-  
+    
+    <data-table-column
+    [property]="'UOM'"  
+    [header]="'UOM'"
+    [sortable]="false"
+    [resizable]="true"
+    >
+    </data-table-column>
+
     <data-table-column
     [property]="'Price'"  
     [header]="'Price'"
@@ -72,16 +80,24 @@
   </ng-template>
   </data-table-column>
   
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="Order Quantity" ng-model="item.orderQuantity" >   
-    </div>
+  <data-table-column
+  [property]="'OrderQuantity'" 
+  [header]="'Order Quantity'" 
+  >
+    <ng-template #dataTableCell let-item="item">
+      <!-- <input  [(ngModel)]="item.OrderQuantity" name="orderquantity" id="orderquantity" type="number" class="form-control" placeholder="0" required [min]="0"> -->
+              <input #orderquantity="ngModel" [(ngModel)]="item.OrderQuantity" name="orderquantity" id="orderquantity" type="number" class="form-control" placeholder="0" required [min]="0">
+    </ng-template>
+  </data-table-column>
+
+  <data-table-column
+    [property]="'$id'"  
+    [header]="'Add to order list'" 
+  >
+    <ng-template #dataTableCell let-item="item">
+      <button (click)='save(item)'>Add</button>
+    </ng-template>
+  </data-table-column>
     
-    <data-table-column
-      [property]="'$id'"  
-    >
-      <ng-template #dataTableCell let-item="item">
-        <button (click)='save(item.$id)'>Select</button>
-      </ng-template>
-    </data-table-column>
   
   </data-table>

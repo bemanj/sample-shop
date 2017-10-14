@@ -1,10 +1,12 @@
+import { SelectedProduct } from './../../../shared/models/selected-product';
+import { ParentDialogComponent } from './../parent-dialog/parent-dialog.component';
+import { DialogService } from 'ng2-bootstrap-modal';
 import { SalesOrder } from './../../../shared/models/sales-order';
 import { DataTableResource } from 'angular-4-data-table';
 import { InventoryListService } from './../../../shared/services/inventory-list.service';
 import { InventoryList } from './../../../shared/models/inventory-list';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-
 
 @Component({
   selector: 'product-selection',
@@ -17,11 +19,13 @@ export class ProductSelectionComponent implements OnInit {
   tableResource: DataTableResource<InventoryList>;
   items: InventoryList[] = [];
   itemCount: number;
+  order;
   @Input('master') masterName: string;
   @Input('sonumber') soNumber: string;
   @Input('salesorder') salesorder: SalesOrder[] = [];
 
-  constructor(private inventoryList: InventoryListService ) { 
+  constructor(private inventoryList: InventoryListService,
+    private dialogService:DialogService ) { 
     this.subscription = this.inventoryList.getAll()
     .subscribe(inventory => {
       this.inventory = inventory;
@@ -44,7 +48,7 @@ export class ProductSelectionComponent implements OnInit {
       .then(items => this.items = items);    
   }
 
-  save(inventory) {
+  save(item) {
     // alert('test save function');
     var date = new Date();
        // this.inventoryService.create(invdata).subscribe(data => this.inventories$ = data);;
@@ -52,10 +56,21 @@ export class ProductSelectionComponent implements OnInit {
       // console.log('id ' + this.id);
       //  this.inventoryService.create(invdata).subscribe(data => this.inventories$ = data);
       //  this.router.navigate(['/inventory-list']);
-      // console.log(this.soNumber$);
+      // console.log(item.$id + ' qty ' + item.price);
+      if (item.OrderQuantity > 0 && !isNaN(item.OrderQuantity)) {
+        console.log('Amount :' + item.Price * item.OrderQuantity);
+      }
+      else{
+        alert('Invalid quantity :' + item.OrderQuantity);
+      }
+      
     }
 
   ngOnInit() {
+  }
+
+  showParentDialog() {
+    this.dialogService.addDialog(ParentDialogComponent);
   }
 
   ngOnDestroy(){

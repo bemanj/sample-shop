@@ -11,6 +11,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import { CustomFormsModule } from 'ng2-validation';
+import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
@@ -39,6 +40,7 @@ import { UserService } from './services/user.service';
     DateTimePickerModule,
     BrowserModule,
     BrowserAnimationsModule,
+    BootstrapModalModule,
     NgbModule.forRoot(),
   ],
   declarations: [
@@ -59,6 +61,7 @@ import { UserService } from './services/user.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule.forRoot().ngModule,
+    BootstrapModalModule,
   ],
   providers: [
     AuthService,
