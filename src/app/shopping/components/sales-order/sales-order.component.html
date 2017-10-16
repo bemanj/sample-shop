@@ -1,45 +1,21 @@
-<div class="row">
-  <!-- <div class="col-3">
-    <div class="sticky-top">
-      <div class="list-group">
-          <a
-            class="list-group-item list-group-item-action"
-            >All Categories</a>
-          <a 
-            *ngFor="let c of categories$" 
-            class="list-group-item list-group-item-action"
-            >
-            {{ c.name }}
-          </a>
-        </div>
-    </div>
-  </div> -->
-  <div class="col">
-      <button (click)="save()"  id="btnSave" class="btn btn-primary">Create SO</button>
-      <label>=></label>
-      <button id="selectProduct" class="btn btn-primary">Select Products</button> 
-      <label>=></label>
-      <button (click)="fuilfilled()" id="selectProduct" class="btn btn-primary">Fulfilled</button> 
-  </div>
-</div> 
 
 <div class="row">
-      <div class="col-8">
-          <div class="form-group">
-            <h1>
-              Order Number: {{ salesorder.SalesOrderNumber }}
-            </h1>
-        </div>
-      </div>
+  <div class="col-8">
+      <div class="form-group">
+        <h1>
+          Order Number: {{ salesorder.SalesOrderNumber }}
+        </h1>
+    </div>
+  </div>
 </div>
 
 <div class="row">
   <div class="col">
-    <!-- <form #f="ngForm" (ngSubmit)="save(f.value)" id="f"> -->
+    <form #f="ngForm"  id="f">
       <div class="form-group">
-          <label for="soSubTotal">Company</label>
-          <input #soSubTotal="ngModel" ngModel [(ngModel)]="orderHeader.soSubTotal" name="soSubTotal" id="soSubTotal" type="text" class="form-control">
-          <div class="alert alert-danger" *ngIf="soSubTotal.touched && soSubTotal.invalid">
+          <label for="Company">Company</label>
+          <input #Company="ngModel" ngModel [(ngModel)]="orderHeader.Company" name="Company" id="Company" type="text" class="form-control">
+          <div class="alert alert-danger" *ngIf="Company.touched && Company.invalid">
             Sub total is required.
           </div>
       </div>
@@ -99,7 +75,16 @@
         Sub total is required.
       </div>
   </div>
-    <!-- </form> -->
+
+  <div class="form-group">
+        <button (click)="save(f.value)"  id="btnSave" class="btn btn-primary">Create SO</button>
+        <label>=></label>
+        <button (click)="print(salesorder.SalesOrderNumber)" id="btnPrint" class="btn btn-primary">Print Module</button> 
+        <label>=></label>
+        <button (click)="fuilfilled()" id="selectProduct" class="btn btn-primary">Fulfilled</button> 
+  </div> 
+  
+</form>
     <div class="col">Product Selection
         <product-selection
         [master]="master"

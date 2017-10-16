@@ -85,7 +85,7 @@ export class ProductSelectionComponent implements OnInit {
 
       this.orderdetailService.create(postdata).subscribe(data => this.postData$ = data);
 
-      this.router.navigate(['/order-details']);
+      // this.router.navigate(['/order-detail']);
 
     }
     else{

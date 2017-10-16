@@ -53,7 +53,7 @@ export class OrderDetailComponent implements OnInit {
   }
 
   save(item) {
-    console.log('order detail ' + item  + 'sales order id: ' + this.salesorder);
+    console.log('order Discount ' + item.Discount  + 'sales order id: ' + item.$id);
   }
 
   ngOnInit() {

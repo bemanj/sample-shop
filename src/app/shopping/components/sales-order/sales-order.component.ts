@@ -26,9 +26,8 @@ export class SalesOrderComponent implements OnInit {
   items: SalesReport[] = [];
   itemCount: number;
   sonumber;
-  salesorder;
   soid;
-  
+  salesorder = new SalesOrder();
   master;
 
   // @Input('category') category;
@@ -37,21 +36,26 @@ export class SalesOrderComponent implements OnInit {
     private salesreportservice : SalesReportService,
     private router: Router, 
     private route: ActivatedRoute) { 
-      this.salesorder = new SalesOrder();
+      // this.salesorder = new SalesOrder();
   } 
 
 
-  save() {
+  save(item) {
     
     // alert('test save function');
     if(this.btn == 'CANCEL SO')
     {
         alert('Are you sure?');
     } else {
+
+      console.log('coy ' + item.Company);
+
       var date = new Date();
+
       var sodata = {
         //SalesOrderID: 1
         OrderDate: date,
+        Customer: item.Company,
         //, OnlineOrderFlag: true
         //, SalesOrderNumber: 'SO1'
         SubTotal: 0,//orderHeader.soSubTotal,
@@ -72,6 +76,11 @@ export class SalesOrderComponent implements OnInit {
     }
   
   } 
+
+  print(item){
+    // console.log('printing form');
+    this.router.navigate(['/print-form/', item]);
+  }
 
     getSalesReport() {
       
