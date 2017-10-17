@@ -1,11 +1,10 @@
+import { CategoryPostService } from './../../../shared/services/category-post.service';
+import { SalesReportService } from './../../../shared/services/sales-service/sales-report.service';
+import { SalesReport } from './../../../shared/models/sales-report';
 import { SalesOrder } from './../../../shared/models/sales-order';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { SalesReport } from './../../../shared/models/sales-report';
 import { DataTableResource } from 'angular-4-data-table';
-
-import { SalesReportService } from './../../../shared/services/sales-report.service';
-import { CategoryPostService } from './../../../shared/services/category-post.service';
 import { Component, OnInit, Input, NgModule } from '@angular/core';
 
 @Component({
@@ -14,8 +13,6 @@ import { Component, OnInit, Input, NgModule } from '@angular/core';
   styleUrls: ['./sales-order.component.css']
 })
 export class SalesOrderComponent implements OnInit {
-  categories$;
-  orderHeader = {};
   btn = 'New';
   soNumber$ = '';
   data = '';
@@ -27,7 +24,7 @@ export class SalesOrderComponent implements OnInit {
   itemCount: number;
   sonumber;
   soid;
-  salesorder = new SalesOrder();
+  orderHeader = new SalesOrder();
   master;
 
   // @Input('category') category;
@@ -36,46 +33,41 @@ export class SalesOrderComponent implements OnInit {
     private salesreportservice : SalesReportService,
     private router: Router, 
     private route: ActivatedRoute) { 
-      // this.salesorder = new SalesOrder();
+
+      this.soid = this.route.snapshot.paramMap.get('id');
+
+      this.salesreportservice.getSO(this.soid).subscribe(so => {
+        this.orderHeader = so,
+        console.log('so only' + so)
+      });
+
+      console.log('soid' + this.soid);
   } 
 
 
-  save(item) {
-    
+  update(item) {
     // alert('test save function');
-    if(this.btn == 'CANCEL SO')
-    {
-        alert('Are you sure?');
-    } else {
+      alert('Sales order will be updated');
 
       console.log('coy ' + item.Company);
 
       var date = new Date();
 
       var sodata = {
-        //SalesOrderID: 1
-        OrderDate: date,
-        Customer: item.Company,
-        //, OnlineOrderFlag: true
-        //, SalesOrderNumber: 'SO1'
-        SubTotal: 0,//orderHeader.soSubTotal,
-        TaxAmt: 0,//orderHeader.soTaxAmt,
-        Freight: 0,//orderHeader.soFreight,
-        //TotalDue: soTotalDue,
-        Comment: 'test',//orderHeader.soComment,
-        ModifiedDate: date
+        SalesOrderID: this.soid,
+        Customer: item.Customer,
+        TaxAmt: item.soTax,//orderHeader.soTaxAmt,
+        Freight: item.soFreight,//orderHeader.soFreight,
+        Comment: item.soComment//orderHeader.soComment,
+        // ModifiedDate: date
       }
-      this.salesreportservice.create(sodata).subscribe(data => {
-        this.salesorder = data,
-        console.log(this.salesorder.SalesOrderID)
-        this.router.navigate(['/sales-order/', this.salesorder.SalesOrderID]);
-        });
-      this.btn = 'CANCEL SO';
-      
-      
+      console.log(sodata);
+      if (this.soid) 
+      this.salesreportservice.update(this.soid, sodata)
+      .subscribe(data => this.orderHeader = data);
+        console.log('update so' + this.orderHeader.SalesOrderID)
     }
   
-  } 
 
   print(item){
     // console.log('printing form');

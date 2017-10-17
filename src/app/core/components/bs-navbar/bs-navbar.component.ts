@@ -1,3 +1,6 @@
+import { SalesOrder } from './../../../shared/models/sales-order';
+import { SalesReportService } from './../../../shared/services/sales-service/sales-report.service';
+import { Router } from '@angular/router';
 import { ShoppingCart } from '../../../shared/models/shopping-cart';
 import { Observable } from 'rxjs/Observable';
 import { ShoppingCartService } from '../../../shared/services/shopping-cart.service';
@@ -14,7 +17,10 @@ export class BsNavbarComponent implements OnInit {
   appUser: AppUser;
   cart$: Observable<ShoppingCart>;
 
-  constructor(private auth: AuthService, private shoppingCartService: ShoppingCartService) { 
+  constructor(private auth: AuthService, 
+    private router: Router, 
+    private salesreportservice: SalesReportService,
+    private shoppingCartService: ShoppingCartService) { 
   }
 
   async ngOnInit() { 
@@ -22,6 +28,25 @@ export class BsNavbarComponent implements OnInit {
     this.cart$ = await this.shoppingCartService.getCart();
   }
 
+    save(){
+      
+      var date = new Date();
+  
+      var sodata = {
+        OrderDate: date,
+        Customer: '',
+        SubTotal: 0,//orderHeader.soSubTotal,
+        TaxAmt: 0,//orderHeader.soTaxAmt,
+        Freight: 0,//orderHeader.soFreight,
+        Comment: 'test',//orderHeader.soComment,
+        ModifiedDate: date
+      }
+  
+    this.salesreportservice.create(sodata).subscribe(data => {
+      this.router.navigate(['/sales-order', data.SalesOrderID]);
+        });
+    }
+  
   logout() {
     this.auth.logout();
   }

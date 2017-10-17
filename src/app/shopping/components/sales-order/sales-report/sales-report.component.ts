@@ -1,10 +1,10 @@
+import { CategoryPostService } from './../../../../shared/services/category-post.service';
+import { SalesReportService } from './../../../../shared/services/sales-service/sales-report.service';
+import { SalesReport } from './../../../../shared/models/sales-report';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { SalesReport } from './../../../shared/models/sales-report';
 import { DataTableResource } from 'angular-4-data-table';
 
-import { SalesReportService } from './../../../shared/services/sales-report.service';
-import { CategoryPostService } from './../../../shared/services/category-post.service';
 import { Component, OnInit, Input, NgModule } from '@angular/core';
 
 @Component({

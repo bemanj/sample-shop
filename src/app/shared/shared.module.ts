@@ -24,7 +24,7 @@ import { OrderService } from './services/order.service';
 import { PrintService } from './services/print.service';
 import { ProductListService } from './services/product-list.service';
 import { ProductService } from './services/product.service';
-import { SalesReportService } from './services/sales-report.service';
+import { SalesReportService } from './services/sales-service/sales-report.service';
 import { ShoppingCartService } from './services/shopping-cart.service';
 import { UserService } from './services/user.service';
 

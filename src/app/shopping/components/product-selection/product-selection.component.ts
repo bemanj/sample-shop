@@ -24,8 +24,8 @@ export class ProductSelectionComponent implements OnInit {
   order;
   data;
   @Input('master') masterName: string;
-  @Input('sonumber') soNumber: string;
-  @Input('salesorder') salesorder: SalesOrder[] = [];
+  @Input('soid') soid: string;
+  @Input('orderHeader') orderHeader: SalesOrder[] = [];
   private totalAmount = 0;
   postData$;
 

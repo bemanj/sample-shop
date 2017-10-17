@@ -3,7 +3,7 @@
   <div class="col-8">
       <div class="form-group">
         <h1>
-          Order Number: {{ salesorder.SalesOrderNumber }}
+          Order Number: {{ soid }}
         </h1>
     </div>
   </div>
@@ -13,71 +13,79 @@
   <div class="col">
     <form #f="ngForm"  id="f">
       <div class="form-group">
-          <label for="Company">Company</label>
-          <input #Company="ngModel" ngModel [(ngModel)]="orderHeader.Company" name="Company" id="Company" type="text" class="form-control">
-          <div class="alert alert-danger" *ngIf="Company.touched && Company.invalid">
-            Sub total is required.
+          <label for="Customer">Customer</label>
+          <input #Customer="ngModel" ngModel [(ngModel)]="orderHeader.Customer" name="Customer" id="Customer" type="text" class="form-control">
+          <div class="alert alert-danger" *ngIf="Customer.touched && Customer.invalid">
+            Customer is required.
           </div>
       </div>
 
-      <div class="form-group">
+      <!-- <div class="form-group">
           <label for="soTaxAmt">Contact Name</label>
           <input #soTaxAmt="ngModel" ngModel [(ngModel)]="orderHeader.soTaxAmt" name="soTaxAmt" id="soTaxAmt" type="text" class="form-control">
           <div class="alert alert-danger" *ngIf="soTaxAmt.touched && soTaxAmt.invalid">
             Sub total is required.
           </div>
-      </div>
+      </div> -->
 
-      <div class="form-group">
-          <label for="soFreight">Address</label>
-          <input #soFreight="ngModel" ngModel [(ngModel)]="orderHeader.soFreight" name="soFreight" id="soFreight" type="text" class="form-control">
-          <div class="alert alert-danger" *ngIf="soFreight.touched && soFreight.invalid">
-            Freight is required.
+      <!-- <div class="form-group">
+          <label for="soAddress">Address</label>
+          <input #soAddress="ngModel" ngModel [(ngModel)]="orderHeader.soAddress" name="soAddress" id="soAddress" type="text" class="form-control">
+          <div class="alert alert-danger" *ngIf="soAddress.touched && soAddress.invalid">
+            Address is required.
           </div>
-      </div>
+      </div> -->
       
-      <div class="form-group">
+      <!-- <div class="form-group">
           <label for="soComment">Contact Number</label>
           <input #soComment="ngModel" ngModel [(ngModel)]="orderHeader.soComment" name="soComment" id="soComment" type="text" class="form-control">
           <div class="alert alert-danger" *ngIf="soComment.touched && soComment.invalid">
             Sub total is required.
           </div>
-      </div>
+      </div> -->
 
       <div class="form-group">
-        <label for="soComment">Freight</label>
-        <input #soComment="ngModel" ngModel [(ngModel)]="orderHeader.soComment" name="soComment" id="soComment" type="text" class="form-control">
-        <div class="alert alert-danger" *ngIf="soComment.touched && soComment.invalid">
-          Sub total is required.
+        <label for="soFreight">Freight</label>
+        <input #soFreight="ngModel" ngModel [(ngModel)]="orderHeader.soFreight" name="soFreight" id="soFreight" type="text" class="form-control">
+        <div class="alert alert-danger" *ngIf="soFreight.touched && soFreight.invalid">
+          Freight is required.
         </div>
     </div>
 
     <div class="form-group">
-      <label for="soComment">Tax</label>
-      <input #soComment="ngModel" ngModel [(ngModel)]="orderHeader.soComment" name="soComment" id="soComment" type="text" class="form-control">
-      <div class="alert alert-danger" *ngIf="soComment.touched && soComment.invalid">
-        Sub total is required.
+      <label for="soTax">Tax</label>
+      <input #soTax="ngModel" ngModel [(ngModel)]="orderHeader.soTax" name="soTax" id="soTax" type="text" class="form-control">
+      <div class="alert alert-danger" *ngIf="soTax.touched && soTax.invalid">
+        Tax is required.
       </div>
     </div>
 
-    <div class="form-group">
-      <label for="soComment">Discount</label>
-      <input #soComment="ngModel" ngModel [(ngModel)]="orderHeader.soComment" name="soComment" id="soComment" type="text" class="form-control">
-      <div class="alert alert-danger" *ngIf="soComment.touched && soComment.invalid">
-        Sub total is required.
+    <!-- <div class="form-group">
+      <label for="soDiscount">Discount</label>
+      <input #soDiscount="ngModel" ngModel [(ngModel)]="orderHeader.soDiscount" name="soDiscount" id="soDiscount" type="text" class="form-control">
+      <div class="alert alert-danger" *ngIf="soDiscount.touched && soDiscount.invalid">
+        Discount is required.
       </div>
-    </div>
+    </div> -->
 
     <div class="form-group">
-      <label for="soComment">Total Amount</label>
-      <input #soComment="ngModel" ngModel [(ngModel)]="orderHeader.soComment" name="soComment" id="soComment" type="text" class="form-control">
-      <div class="alert alert-danger" *ngIf="soComment.touched && soComment.invalid">
-        Sub total is required.
+      <label for="soTotal">Total Amount</label>
+      <input #soTotal="ngModel" ngModel [(ngModel)]="orderHeader.soTotal" name="soTotal" id="soTotal" type="text" class="form-control">
+      <div class="alert alert-danger" *ngIf="soTotal.touched && soTotal.invalid">
+         Total is required.
       </div>
-  </div>
+    </div>
 
   <div class="form-group">
-        <button (click)="save(f.value)"  id="btnSave" class="btn btn-primary">Create SO</button>
+    <label for="soComment">Comment</label>
+    <input #soComment="ngModel" ngModel [(ngModel)]="orderHeader.soComment" name="soComment" id="soComment" type="text" class="form-control">
+    <div class="alert alert-danger" *ngIf="soComment.touched && soComment.invalid">
+      Sub total is required.
+    </div>
+</div>
+
+  <div class="form-group">
+        <button (click)="update(f.value)"  id="btnSave" class="btn btn-primary">Update</button>
         <label>=></label>
         <button (click)="print(salesorder.SalesOrderNumber)" id="btnPrint" class="btn btn-primary">Print Module</button> 
         <label>=></label>
@@ -88,8 +96,8 @@
     <div class="col">Product Selection
         <product-selection
         [master]="master"
-        [sonumber]="sonumber"
-        [salesorder]="salesorder">
+        [soid]="soid"
+        [orderHeader]="orderHeader">
       </product-selection>
       Order Details
     <order-detail></order-detail>

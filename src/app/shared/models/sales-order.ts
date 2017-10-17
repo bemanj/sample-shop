@@ -1,14 +1,16 @@
+import { SalesReportService } from './../services/sales-service/sales-report.service';
 export class SalesOrder {
-    $id:number;  
+    $id: number;  
     SONumber: string;
     SalesOrderID: number;
-    OnlineOrderFlag:boolean;
-    SalesOrderNumber:string;
-    SubTotal:number;
-    TaxAmt:number;
-    Freight:number;
-    TotalDue:number;
-    Comment:string;
+    Customer: string;
+    OnlineOrderFlag: boolean;
+    SalesOrderNumber: string;
+    SubTotal: number;
+    TaxAmt: number;
+    Freight: number;
+    TotalDue: number;
+    Comment: string;
 
      get SONum(){
       return this.SONumber;
@@ -17,12 +19,6 @@ export class SalesOrder {
      get SOId(){
       return this.SalesOrderID;
     }
-  }
 
-  export class SalesOrderData{
-    constructor(){
-      let sodata = new SalesOrder();
-      sodata.SONum;
-    }
-    
-  }
+
+}

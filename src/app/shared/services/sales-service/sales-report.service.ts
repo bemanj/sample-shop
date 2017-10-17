@@ -17,6 +17,12 @@ export class SalesReportService {
         .do(this.logResponse)
         .map((res: Response) => res.json());
       }
+
+  update(soid, sodata) { 
+    return this.http.put(this._url + 'SalesOrderHeaders/' + soid, sodata)
+    .do(this.logResponse)
+    .map((res: Response) => res.json());
+  }
   
   // sales orders
   getAllSO() { 
@@ -24,6 +30,13 @@ export class SalesReportService {
         .do(this.logResponse)
         .map((res: Response) => res.json());
   }
+
+  // sales orders
+  getSO(id) { 
+    return this.http.get(this._url + 'SalesOrderHeaders/', id)
+   .do(this.logResponse)
+   .map((res: Response) => res.json());
+}
 
   getAllTotalSales() { 
     return this.http.get(this._url + 'SalesReport/')
