@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OrderDetailService } from '../../../shared/services/order-detail.service';
 import { OrderDetailList } from '../../../shared/models/order-detail';
 import { SalesOrder } from './../../../shared/models/sales-order';
@@ -23,7 +23,8 @@ export class OrderDetailComponent implements OnInit {
   @Input('salesorder') salesorder: SalesOrder[] = [];
 
   constructor(private orderdetailList: OrderDetailService,
-  private route: ActivatedRoute ) { 
+    private router: Router,
+    private route: ActivatedRoute ) { 
     this.route.paramMap
     .subscribe(params => {
       let id = params.get('id');
@@ -50,6 +51,12 @@ export class OrderDetailComponent implements OnInit {
 
     this.tableResource.query(params)
       .then(items => this.items = items);    
+  }
+
+  remove(id){
+    console.log(id);
+    this.orderdetailList.delete(id).subscribe();
+    this.router.navigate(['/sales-order', id]);
   }
 
   save(item) {

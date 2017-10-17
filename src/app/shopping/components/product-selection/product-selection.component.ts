@@ -56,7 +56,7 @@ export class ProductSelectionComponent implements OnInit {
       .then(items => this.items = items);    
   }
 
-  save(item) {
+   save(item) {
 
     
     if (item.OrderQuantity > 0 && !isNaN(item.OrderQuantity)) {
@@ -80,11 +80,13 @@ export class ProductSelectionComponent implements OnInit {
           , Discount: 0
           , TotalAmount: this.totalAmount
         }
-
+        
+        this.orderdetailService.create(postdata).subscribe(data => this.postData$ = data);
+        this.router.navigate(['/sales-order', id]);
       });
 
-      this.orderdetailService.create(postdata).subscribe(data => this.postData$ = data);
-
+     
+      
       // this.router.navigate(['/order-detail']);
 
     }

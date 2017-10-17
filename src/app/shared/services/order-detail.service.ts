@@ -42,8 +42,8 @@ export class OrderDetailService {
   }
 
   delete(inventoryId) { 
-    this.http.delete(this._url + 'SalesOrderDetails/' + inventoryId)
+    return this.http.delete(this._url + 'SalesOrderDetails/' + inventoryId)
     .do(this.logResponse)
-    .subscribe((res: Response) => res.json());;
+    .map((res: Response) => res.json());;
   }
 }
