@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { DataTableResource } from 'angular-4-data-table';
 import { Component, OnInit, Input, NgModule } from '@angular/core';
+import 'rxjs/add/operator/take'; 
 
 @Component({
   selector: 'sales-order',
@@ -24,7 +25,9 @@ export class SalesOrderComponent implements OnInit {
   itemCount: number;
   sonumber;
   soid;
-  orderHeader = new SalesOrder();
+  sodatalist = {};
+  // orderHeader = new SalesOrder();
+  orderHeader = {};
   master;
 
   // @Input('category') category;
@@ -35,10 +38,10 @@ export class SalesOrderComponent implements OnInit {
     private route: ActivatedRoute) { 
 
       this.soid = this.route.snapshot.paramMap.get('id');
-
-      this.salesreportservice.getSO(this.soid).subscribe(so => {
-        this.orderHeader = so,
-        console.log('so only' + so)
+      this.salesreportservice.getfSO(this.soid).take(1).subscribe(p => {
+        this.orderHeader= p
+        console.log('so datalist')
+        console.log(this.orderHeader)
       });
 
       console.log('soid' + this.soid);
@@ -56,16 +59,16 @@ export class SalesOrderComponent implements OnInit {
       var sodata = {
         SalesOrderID: this.soid,
         Customer: item.Customer,
-        TaxAmt: item.soTax,//orderHeader.soTaxAmt,
-        Freight: item.soFreight,//orderHeader.soFreight,
-        Comment: item.soComment//orderHeader.soComment,
-        // ModifiedDate: date
+        TaxAmt: item.TaxAmt,//orderHeader.soTaxAmt,
+        Freight: item.Freight,//orderHeader.soFreight,
+        Comment: item.Comment,//orderHeader.soComment,
+        OrderDate: date,
+        ModifiedDate: date
       }
       console.log(sodata);
-      if (this.soid) 
       this.salesreportservice.update(this.soid, sodata)
-      .subscribe(data => this.orderHeader = data);
-        console.log('update so' + this.orderHeader.SalesOrderID)
+      .subscribe();
+        // console.log('update so' + this.orderHeader.SalesOrderID)
     }
   
 

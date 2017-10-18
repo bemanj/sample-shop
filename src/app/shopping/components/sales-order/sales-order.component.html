@@ -45,17 +45,17 @@
       </div> -->
 
       <div class="form-group">
-        <label for="soFreight">Freight</label>
-        <input #soFreight="ngModel" ngModel [(ngModel)]="orderHeader.soFreight" name="soFreight" id="soFreight" type="text" class="form-control">
-        <div class="alert alert-danger" *ngIf="soFreight.touched && soFreight.invalid">
+        <label for="Freight">Freight</label>
+        <input #Freight="ngModel" ngModel [(ngModel)]="orderHeader.Freight" name="Freight" id="Freight" type="text" class="form-control">
+        <div class="alert alert-danger" *ngIf="Freight.touched && Freight.invalid">
           Freight is required.
         </div>
     </div>
 
     <div class="form-group">
-      <label for="soTax">Tax</label>
-      <input #soTax="ngModel" ngModel [(ngModel)]="orderHeader.soTax" name="soTax" id="soTax" type="text" class="form-control">
-      <div class="alert alert-danger" *ngIf="soTax.touched && soTax.invalid">
+      <label for="TaxAmt">TaxAmt</label>
+      <input #TaxAmt="ngModel" ngModel [(ngModel)]="orderHeader.TaxAmt" name="TaxAmt" id="TaxAmt" type="text" class="form-control">
+      <div class="alert alert-danger" *ngIf="TaxAmt.touched && TaxAmt.invalid">
         Tax is required.
       </div>
     </div>
@@ -69,17 +69,17 @@
     </div> -->
 
     <div class="form-group">
-      <label for="soTotal">Total Amount</label>
-      <input #soTotal="ngModel" ngModel [(ngModel)]="orderHeader.soTotal" name="soTotal" id="soTotal" type="text" class="form-control">
-      <div class="alert alert-danger" *ngIf="soTotal.touched && soTotal.invalid">
+      <label for="TotalDue">Total Amount</label>
+      <input #TotalDue="ngModel" ngModel [(ngModel)]="orderHeader.TotalDue" name="TotalDue" id="TotalDue" type="text" class="form-control">
+      <div class="alert alert-danger" *ngIf="TotalDue.touched && TotalDue.invalid">
          Total is required.
       </div>
     </div>
 
   <div class="form-group">
-    <label for="soComment">Comment</label>
-    <input #soComment="ngModel" ngModel [(ngModel)]="orderHeader.soComment" name="soComment" id="soComment" type="text" class="form-control">
-    <div class="alert alert-danger" *ngIf="soComment.touched && soComment.invalid">
+    <label for="Comment">Comment</label>
+    <input #Comment="ngModel" ngModel [(ngModel)]="orderHeader.Comment" name="Comment" id="Comment" type="text" class="form-control">
+    <div class="alert alert-danger" *ngIf="Comment.touched && Comment.invalid">
       Sub total is required.
     </div>
 </div>

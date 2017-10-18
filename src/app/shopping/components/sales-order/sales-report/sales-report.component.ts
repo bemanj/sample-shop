@@ -47,6 +47,18 @@ export class SalesReportComponent implements OnInit  {
     this.tableResource.count()
       .then(count => this.itemCount = count);
   }
+  
+  rowDoubleClick(rowEvent) {
+    this.router.navigate(['/sales-order', rowEvent.row.item.$id]);
+    // console.log('Double clicked: ' + rowEvent.row.item.$id);
+  }
+
+  rowTooltip(item) { return item.SalesOrderNumber; }
+
+  loadSO(params){
+    if (!this.tableResource) return;
+            console.log(params)
+  }
 
   reloadItems(params) {
     if (!this.tableResource) return;

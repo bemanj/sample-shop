@@ -39,7 +39,7 @@
 
   <data-table-column
   [property]="'Quantity'"  
-  [header]="'Stock Quantity'"
+  [header]="'Order Quantity'"
   [sortable]="true"
   [resizable]="true"
   >
@@ -71,7 +71,7 @@
   >
     <ng-template #dataTableCell let-item="item">
       <button (click)='save(item)'>Update</button>
-      <!-- <button (click)='remove(item.$id)'>Remove</button> -->
+      <button (click)='remove(item.$id)'>Remove</button>
     </ng-template>
   </data-table-column>
 

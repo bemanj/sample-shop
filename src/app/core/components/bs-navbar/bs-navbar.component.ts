@@ -27,25 +27,26 @@ export class BsNavbarComponent implements OnInit {
     this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
     this.cart$ = await this.shoppingCartService.getCart();
   }
+  
 
-    save(){
-      
-      var date = new Date();
-  
-      var sodata = {
-        OrderDate: date,
-        Customer: '',
-        SubTotal: 0,//orderHeader.soSubTotal,
-        TaxAmt: 0,//orderHeader.soTaxAmt,
-        Freight: 0,//orderHeader.soFreight,
-        Comment: 'test',//orderHeader.soComment,
-        ModifiedDate: date
-      }
-  
-    this.salesreportservice.create(sodata).subscribe(data => {
-      this.router.navigate(['/sales-order', data.SalesOrderID]);
-        });
+  save(){
+    
+    var date = new Date();
+
+    var sodata = {
+      OrderDate: date,
+      Customer: '',
+      SubTotal: 0,//orderHeader.soSubTotal,
+      TaxAmt: 0,//orderHeader.soTaxAmt,
+      Freight: 0,//orderHeader.soFreight,
+      Comment: 'test',//orderHeader.soComment,
+      ModifiedDate: date
     }
+
+  this.salesreportservice.create(sodata).subscribe(data => {
+    this.router.navigate(['/sales-order', data.SalesOrderID]);
+      });
+  }
   
   logout() {
     this.auth.logout();

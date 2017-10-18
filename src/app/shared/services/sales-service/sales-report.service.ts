@@ -6,7 +6,7 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class SalesReportService {
 
-  private _url = 'http://localhost:50524/api/' //64770 //64770
+  private _url = 'http://localhost:64770/api/' //64770 //64770
   private name;
 
   constructor(private http: Http) { }
@@ -32,8 +32,8 @@ export class SalesReportService {
   }
 
   // sales orders
-  getSO(id) { 
-    return this.http.get(this._url + 'SalesOrderHeaders/', id)
+  getfSO(id) { 
+    return this.http.get(this._url + 'SalesOrderHeaders/' + id)
    .do(this.logResponse)
    .map((res: Response) => res.json());
 }

@@ -20,7 +20,9 @@
     <data-table
     [items]="items"
     [itemCount]="itemCount"
-    (reload)="reloadItems($event)">
+    (reload)="reloadItems($event)"
+    [rowTooltip]="rowTooltip"
+    (rowDoubleClick)="rowDoubleClick($event)">
     <data-table-column
       [property]="'SalesOrderNumber'"  
       [header]="'SO Number'"
