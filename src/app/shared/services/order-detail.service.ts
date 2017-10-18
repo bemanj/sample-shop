@@ -7,8 +7,9 @@ import 'rxjs/add/operator/do';
 export class OrderDetailService {
 
   // http://localhost/MNMSolutions.Web.Api
-  // private _url = 'http://localhost:64770/api/' //64770 //57483
-  private _url = 'http://localhost:64770/api/' //64770 //57483
+  // private _url = 'http://3localhost:64770/api/' //64770 //57483
+  // http://localhost:50524/
+  private _url = 'http://localhost:50524/api/' //64770 //57483
 
   constructor(private http: Http) { }
 

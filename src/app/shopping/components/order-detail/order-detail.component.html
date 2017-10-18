@@ -4,14 +4,14 @@
     (keyup)="filter(query.value)"
     type="text" class="form-control" placeholder="Search...">
 </p> {{masterName}} -->
-<p>
+<!-- <p>
   <label>SO Number: {{ soNumber }}
   </label>
   <label>Master: {{masterName}}
     </label>
     <label>Sales Order ID: {{salesorder.SalesOrderID}}
       </label>
-</p>
+</p> -->
 
 <data-table
   [items]="items"
@@ -71,7 +71,7 @@
   >
     <ng-template #dataTableCell let-item="item">
       <button (click)='save(item)'>Update</button>
-      <button (click)='remove(item.$id)'>Remove</button>
+      <button (click)='remove(item)'>Remove</button>
     </ng-template>
   </data-table-column>
 

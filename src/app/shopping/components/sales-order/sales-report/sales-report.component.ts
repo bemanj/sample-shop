@@ -49,7 +49,8 @@ export class SalesReportComponent implements OnInit  {
   }
   
   rowDoubleClick(rowEvent) {
-    this.router.navigate(['/sales-order', rowEvent.row.item.$id]);
+    // console.log(rowEvent.row.item.SalesOrderID);
+    this.router.navigate(['/sales-order', rowEvent.row.item.SalesOrderID]);
     // console.log('Double clicked: ' + rowEvent.row.item.$id);
   }
 

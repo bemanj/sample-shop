@@ -53,10 +53,10 @@ export class OrderDetailComponent implements OnInit {
       .then(items => this.items = items);    
   }
 
-  remove(id){
-    console.log(id);
-    this.orderdetailList.delete(id).subscribe();
-    this.router.navigate(['/sales-order', id]);
+  remove(item){
+    console.log(item.SODetailsID);
+    this.orderdetailList.delete(item.SODetailsID).subscribe();
+    // this.router.navigate(['/sales-order', item]);
   }
 
   save(item) {

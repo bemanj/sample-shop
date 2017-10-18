@@ -26,7 +26,7 @@ export class SalesOrderComponent implements OnInit {
   sonumber;
   soid;
   sodatalist = {};
-  // orderHeader = new SalesOrder();
+  //orderHeader = new SalesOrder();
   orderHeader = {};
   master;
 
@@ -37,14 +37,12 @@ export class SalesOrderComponent implements OnInit {
     private router: Router, 
     private route: ActivatedRoute) { 
 
+      // this.soid = this.route.snapshot.paramMap.get('id');
+      // this.salesreportservice.getfSO(this.soid).subscribe(p => {
+      //   this.orderHeader= p
+      // });
       this.soid = this.route.snapshot.paramMap.get('id');
-      this.salesreportservice.getfSO(this.soid).take(1).subscribe(p => {
-        this.orderHeader= p
-        console.log('so datalist')
-        console.log(this.orderHeader)
-      });
-
-      console.log('soid' + this.soid);
+      console.log('soid ' + this.soid);
   } 
 
 
@@ -72,9 +70,8 @@ export class SalesOrderComponent implements OnInit {
     }
   
 
-  print(item){
-    // console.log('printing form');
-    this.router.navigate(['/print-form/', item]);
+  print(id){
+    this.router.navigate(['/print-form/', id]);
   }
 
     getSalesReport() {
@@ -82,7 +79,11 @@ export class SalesOrderComponent implements OnInit {
     }
 
      ngOnInit() {
-       
+      
+      this.salesreportservice.getfSO(this.soid).take(1).subscribe(p => {
+        this.orderHeader = p
+        console.log(this.orderHeader)
+      });       
     }
 
     ngOnDestroy(){

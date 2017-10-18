@@ -1,59 +1,50 @@
-import { query } from '@angular/animations';
-import { OrderByOptions } from 'angularfire2/interfaces';
-import { ShoppingCart } from '../models/shopping-cart';
-import { Product } from './../models/product';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { Http, Response, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
 
 @Injectable()
 export class PrintService {
-yourData;
 
-  constructor(private db: AngularFireDatabase) { 
+  // http://localhost/MNMSolutions.Web.Api
+  // private _url = 'http://3localhost:64770/api/' //64770 //57483
+  // http://localhost:50524/
+  private _url = 'http://localhost:50524/api/' //64770 //57483
+
+  constructor(private http: Http) { }
+
+  create(body) { 
+    console.log(body);
+    return this.http.post(this._url + 'SalesOrderDetails', body)
+    .do(this.logResponse)
+    .map((res: Response) => res.json());
   }
 
-  get(orderId) { 
-      return this.db.object('/orders/' + orderId);
+  getAll() { 
+    // console.log(this.http.get(this.url + 'category1'));
+  return this.http.get(this._url + 'view_SalesOrderDetails')
+   .do(this.logResponse)
+   .map((res: Response) => res.json());
   }
 
-  getItems1 (){
-    return this.db.list('/orders').map((items) => {
-      return items.map(item => {
-        item.metadata = this.db.object('/items/' + item.$key + '/product/');
-        return item;
-      });
-    })
+  private logResponse(res: Response) {
+    console.log(res);
   }
 
-  getItems(orderId) {
-    this.yourData = this.db.list('/orders/' + orderId + '/items/', {
-                  query:{
-                    orderByKey :true
-                  }
-                })
-    .map((itemKeys) => {
-      return  itemKeys.map(key => {
-        key.data = this.db.list(`/orders/' + orderId + '/items/${key.id}/product/`);
-           return  key;
-       })
-      });
-
-  // console.log(this.yourData);
+  get(inventoryId) { 
+    return this.http.get(this._url + 'InventoryView/' + inventoryId)
+    .do(this.logResponse)
+    .map((res: Response) => res.json());
   }
 
-  // getItems(orderId) { 
-  //   return this.db.object('/orders/' + orderId + '/items/', {
-  //                 query:{
-  //                   or
-  //                 }
-  //   });
-  // }
+  update(inventoryId, inventory) { 
+    this.http.put(this._url + 'SalesOrderDetails/' + inventoryId,inventory)
+    .subscribe((res: Response) => res.json());;
+  }
 
-  // async getCart(): Promise<Observable<ShoppingCart>> {
-  //   let cartId = await this.getOrCreateCartId();
-  //   return this.db.object('/shopping-carts/' + cartId)
-  //     .map(x => new ShoppingCart(x.items));
-  // }
-
-
+  delete(inventoryId) { 
+    return this.http.delete(this._url + 'SalesOrderDetails/' + inventoryId)
+    .do(this.logResponse)
+    .map((res: Response) => res.json());;
+  }
 }

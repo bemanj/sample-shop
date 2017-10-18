@@ -1,171 +1,98 @@
+<div>
+    <button (click)="backtoSO(orderHeader.SalesOrderID)" id="backtoSO" class="btn btn-primary">Back to SO</button> 
+    <button class="print"  (click)="print('printSectionId')" class="btn btn-primary">Print</button>
+</div>
 <div class="row" print-section id="printSectionId">
-
-    <div class="invoice-box">
-        <table cellpadding="0" cellspacing="0">
-            <tr class="top">
-                <td colspan="2">
-                    <table>
-                        <tr>
-                            <td class="title">
-                                <!-- <img src="" style="width:100%; max-width:300px;"> -->
-                            </td>
-                            
-                            <td>
-                                Sales Order Number #: {{ order.$key }}<br>
-                                Created: January 1, 2015<br>
-                                Due: February 1, 2015
-                            </td>
-                        </tr>
+        <table style="width:850px;">
+            <tr>
+                <td colspan="3" style="vertical-align:top">
+                    <p>
+                        <b>ENZED TRADE INC.<br></b>222-223, 2/F PACIFIC REGENCY CONDOMINIUM&nbsp;
+                        <br>760 PABLO OCAMPO STREET&nbsp;
+                        <br>BGY. 759 ZONE 078, MALATE MANILA, PHILIPPINES&nbsp;
+                        <br>TEL. NO.(632)354-389091 *FAX(632)354-3647&nbsp;
+                        <br>VAT REG. TIN-006-296-064-000&nbsp;
+                        <br>
+                    </p>
+                </td>
+                <td colspan="3" style="vertical-align:top">
+                    <p>
+                         Date:&nbsp;{{ orderHeader.OrderDate }}
+                        <br>Terms:&nbsp;
+                        <br>OSCA/PWD ID No.&nbsp;
+                        <br>SC/PWD Signature&nbsp;
+                        <br>S.O. No.&nbsp;{{ orderHeader.SalesOrderNumber }}
+                        <br>P.O. No.
+                    </p>
+                               </td>
+            </tr>
+            <tr>
+                <td colspan="6"><b>SALES INVOICE:</b> <b>No.</b></td>
+    
+            </tr>
+    
+            <tr>
+                <td > <b>Sold to:</b> <b>{{ orderHeader.Customer }}</b></td>
+                <td><b>Tin:</b><b></b></td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td > <b>Business Style:</b> <b></b></td>
+                <td> <b>Phone:</b> <b></b></td>   
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td colspan="6"> <b>Salesman:</b> <b></b></td> 
+            </tr>
+    
+            <tr>
+    
+                <td colspan="6">
+                    <table class="val" style="width:850px;">
+                        <thead>
+                            <tr align="center">
+                                <td><b>QUANTITY</b></td>
+                                <td><b>UNIT</b></td>
+                                <td><b>ARTICLES</b></td>
+                                <td><b>UNIT PRICE</b></td>
+                                <td><b>AMOUNT</b></td>
+                            </tr>
+                        </thead>
+                        <tbody align="right">
+                            <tr *ngFor="let o of order">
+                                <td>{{ o.Quantity }}</td>
+                                <td align="center">{{ o.UOM }}</td>
+                                <td align="center">{{ o.ProductName }}</td>
+                                <td>{{ o.UnitPrice | currency:'PhP':true }}</td>
+                                <td>{{ o.TotalAmount | currency:'PhP':true }}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><b>Tax</b></td>
+                                <td>{{ orderHeader.TaxAmt | currency:'PhP':true }}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><b>Freight</b></td>
+                                <td>{{ orderHeader.Freight | currency:'PhP':true }}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><b>Total Amount</b></td>
+                                <td>{{ orderHeader.TotalDue | currency:'PhP':true }}</td>
+                            </tr>
+                        </tbody>
                     </table>
-                </td>
-            </tr>
-            
-            <tr class="information">
-                <td colspan="2">
-                    <table>
-                        <tr>
-                            <td>
-                                Sparksuite, Inc.<br>
-                                12345 Sunny Road<br>
-                                Sunnyville, CA 12345
-                            </td>
-                            
-                            <td>
-                                Acme Corp.<br>
-                                John Doe<br>
-                                john@example.com
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            
-            <tr class="heading">
-                <td>
-                    Payment Method
-                </td>
-                
-                <td>
-                    Check #
-                </td>
-            </tr>
-            
-            <tr class="details">
-                <td>
-                    Check
-                </td>
-                
-                <td>
-                    1000
-                </td>
-            </tr>
-            
-            <tr class="heading">
-                <td>
-                    Item
-                </td>
-                
-                <td>
-                    Price
-                </td>
-            </tr>
-            
-            <tr class="item">
-                <td>
-                    Website design
-                </td>
-                
-                <td>
-                    $300.00
-                </td>
-            </tr>
-            
-            <tr class="item">
-                <td>
-                    Hosting (3 months)
-                </td>
-                
-                <td>
-                    $75.00
-                </td>
-            </tr>
-            
-            <tr class="item last">
-                <td>
-                    Domain name (1 year)
-                </td>
-                
-                <td>
-                    $10.00
-                </td>
-            </tr>
-            
-            <tr class="total">
-                <td></td>
-                
-                <td>
-                   Total: $385.00
                 </td>
             </tr>
         </table>
     </div>
-
-  <form #f="ngForm" (ngSubmit)="save(f.value)">
-    <div print-section>
-      <div class="col-6">
-          <div class="col">
-              <label>SO Number: {{ order.$key }}</label>
-          </div>
-        <div class="col">
-            <label>Name: {{ order.shipping.name }}</label>
-        </div>
-        <div class="col">
-          <label for="">Address Line 1: {{ order.shipping.addressLine1 }}</label>
-        </div>
-        <div class="col">
-          <label for="">Address Line 2: {{ order.shipping.addressLine2 }}</label>
-        </div>
-        <div class="col">
-          <label for="">City: {{ order.shipping.city }}</label>
-        </div>
-        <div class="col">
-          <label for="">Date Placed: {{ order.datePlaced | date }}</label>
-        </div>
-        <div class="col">
-            <label for="">Gross Amount: {{ order.grossAmount }}</label>
-        </div>
-        <div class="col">
-            <label for="">Tax Amount: {{ order.taxAmount }}</label>
-          </div>
-        <div class="col">
-            <label for="">Discount Price: {{ order.discountPrice }}</label>
-        </div>
-        <div class="col">
-            <label for="">Net Price: {{ order.netPrice }}</label>
-        </div>
-      </div>
-    </div>
-    <div class="col-6">
-        <table class="table">
-            <thead>
-              <tr>
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>Total Price</th>
-              </tr>
-            </thead> 
-            <tbody>
-              <!-- <tr *ngFor="let o of orderItems.products ">
-                <td>{{ o.title }}</td>
-                <td>{{ o.quantity }}</td>
-                <td>{{ o.totalPrice }}</td> 
-               </tr> -->
-            </tbody> 
-          </table>
-    </div>
-    <div>
-      <button class="print"  (click)="print('printSectionId')">
-      Print</button>
-    </div>
-  </form>
-</div>
+    

@@ -2,7 +2,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { OrderDetailService } from './../../../shared/services/order-detail.service';
 import { SelectedProduct } from './../../../shared/models/selected-product';
 import { ParentDialogComponent } from './../parent-dialog/parent-dialog.component';
-import { DialogService } from 'ng2-bootstrap-modal';
 import { SalesOrder } from './../../../shared/models/sales-order';
 import { DataTableResource } from 'angular-4-data-table';
 import { InventoryListService } from './../../../shared/services/inventory-list.service';
@@ -32,8 +31,7 @@ export class ProductSelectionComponent implements OnInit {
   constructor(private inventoryList: InventoryListService,
     private orderdetailService: OrderDetailService,
     private route: ActivatedRoute,
-    private router: Router, 
-    private dialogService:DialogService ) { 
+    private router: Router) { 
     this.subscription = this.inventoryList.getAll()
     .subscribe(inventory => {
       this.inventory = inventory;
@@ -102,10 +100,7 @@ export class ProductSelectionComponent implements OnInit {
   ngOnInit() {
   }
 
-  showParentDialog() {
-    this.dialogService.addDialog(ParentDialogComponent);
-  }
-
+  
   ngOnDestroy(){
     this.subscription.unsubscribe();
   }

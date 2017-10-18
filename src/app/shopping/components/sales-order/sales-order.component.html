@@ -26,17 +26,16 @@
           <div class="alert alert-danger" *ngIf="soTaxAmt.touched && soTaxAmt.invalid">
             Sub total is required.
           </div>
-      </div> -->
+      </div> 
 
-      <!-- <div class="form-group">
+     <div class="form-group">
           <label for="soAddress">Address</label>
           <input #soAddress="ngModel" ngModel [(ngModel)]="orderHeader.soAddress" name="soAddress" id="soAddress" type="text" class="form-control">
           <div class="alert alert-danger" *ngIf="soAddress.touched && soAddress.invalid">
             Address is required.
           </div>
-      </div> -->
+      </div> 
       
-      <!-- <div class="form-group">
           <label for="soComment">Contact Number</label>
           <input #soComment="ngModel" ngModel [(ngModel)]="orderHeader.soComment" name="soComment" id="soComment" type="text" class="form-control">
           <div class="alert alert-danger" *ngIf="soComment.touched && soComment.invalid">
@@ -87,9 +86,7 @@
   <div class="form-group">
         <button (click)="update(f.value)"  id="btnSave" class="btn btn-primary">Update</button>
         <label>=></label>
-        <button (click)="print(salesorder.SalesOrderNumber)" id="btnPrint" class="btn btn-primary">Print Module</button> 
-        <label>=></label>
-        <button (click)="fuilfilled()" id="selectProduct" class="btn btn-primary">Fulfilled</button> 
+        
   </div> 
   
 </form>
@@ -100,6 +97,11 @@
         [orderHeader]="orderHeader">
       </product-selection>
       Order Details
+    <div>
+        <button (click)="print(soid)" id="btnPrint" class="btn btn-primary">Print Summary</button> 
+        <label>=></label>
+        <button (click)="fuilfilled()" id="selectProduct" class="btn btn-primary">Fulfilled</button> 
+    </div> 
     <order-detail></order-detail>
     
     </div>
