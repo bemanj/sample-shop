@@ -114,14 +114,14 @@
             Category is required.
           </div>
         </div>        
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="imageUrl">Image URL</label>
           <input #imageUrl="ngModel" [(ngModel)]="product.imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control" required url>
           <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
             <div *ngIf="imageUrl.errors.required">Image URL is required.</div>
             <div *ngIf="imageUrl.errors.url">Please enter a valid URL.</div>
           </div>
-        </div>        
+        </div>         -->
         <button [disabled]="!f.valid" class="btn btn-primary">Save</button>
         <button *ngIf="id" type="button" (click)="delete()" class="btn btn-danger">Delete</button>
       </form>    

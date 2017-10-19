@@ -14,7 +14,7 @@ import { Component, OnInit, Input, NgModule } from '@angular/core';
 })
 export class SalesReportComponent implements OnInit  {
   categories$;
-  totalSales$;
+  totalSales;
 
   orderHeader = {};
   data = '';
@@ -38,6 +38,8 @@ export class SalesReportComponent implements OnInit  {
       this.salesReport = salesReport;
       this.initializeTable(salesReport);
     });
+    
+    this.getTotalSales();    
   } 
 
   private initializeTable(sales: SalesReport[]) {
@@ -77,8 +79,7 @@ export class SalesReportComponent implements OnInit  {
   // }
 
   getTotalSales() {
-    this.salesreportservice.getAllTotalSales().subscribe(data => this.totalSales$ = data);
-    console.log(this.totalSales$ + ' total sales');
+    this.salesreportservice.getAllTotalSales().subscribe(data => this.totalSales = data);
   }
 
   getCategories() {

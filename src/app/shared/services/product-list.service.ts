@@ -8,13 +8,16 @@ export class ProductListService {
 
   constructor(private http: Http) { }
 
-  // create(product) { 
-  //   return this.db.list('/products').push(product);
-  // }
+  create(body) {
+    // console.log(body);
+        return this.http.post(this._url + 'ProductOnes/', body)
+        .do(this.logResponse)
+        .map((res: Response) => res.json());
+      }
 
   getAll() { 
     // console.log(this.http.get(this.url + 'category1'));
-  return this.http.get(this._url + 'ProductOnes')
+  return this.http.get(this._url + 'Product')
   .do(this.logResponse)
   .map((res: Response) => res.json());
   // .map((res: Response) => console.log(res.json()));

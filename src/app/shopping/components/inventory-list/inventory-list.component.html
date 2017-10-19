@@ -14,26 +14,28 @@
   [itemCount]="itemCount"
   (reload)="reloadItems($event)">
 
+  <!--  PO number column hidden
+        using [visible]="false"-->
   <data-table-column
     [property]="'PONumber'"  
     [header]="'PO Number'"
     [sortable]="true"
+    [visible]="false" 
     [resizable]="true"
   >
   </data-table-column>
-
+  
   <data-table-column
-  [property]="'ProductName'"  
-  [header]="'Product'"
+  [property]="'CompanyName'"  
+  [header]="'Supplier'"
   [sortable]="true"
   [resizable]="true"
   >
   </data-table-column>
 
-
   <data-table-column
-  [property]="'CompanyName'"  
-  [header]="'Supplier'"
+  [property]="'ProductDescription'"  
+  [header]="'Product'"
   [sortable]="true"
   [resizable]="true"
   >

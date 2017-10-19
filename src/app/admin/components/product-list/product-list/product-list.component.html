@@ -14,7 +14,7 @@
   [itemCount]="itemCount"
   (reload)="reloadItems($event)">
   <data-table-column
-    [property]="'title'"  
+    [property]="'ProductTitle'"  
     [header]="'Title'"
     [sortable]="true"
     [resizable]="true"
@@ -22,25 +22,23 @@
   </data-table-column>
 
   <data-table-column
-  [property]="'unitsinstock'"  
+  [property]="'CategoryName'"  
+  [header]="'Category'"
+  [sortable]="true"
+  [resizable]="true"
+  >
+  </data-table-column>
+
+  <data-table-column
+  [property]="'StockQuantity'"  
   [header]="'Stocks Qty'"
   [sortable]="true"
   [resizable]="true"
   >
   </data-table-column>
 
-
   <data-table-column
-  [property]="'quantityperunit'"  
-  [header]="'Quantity Per Unit'"
-  [sortable]="true"
-  [resizable]="true"
-  >
-  </data-table-column>
-
-
-  <data-table-column
-  [property]="'unitsonorder'"  
+  [property]="'UnitsOnOrder'"  
   [header]="'Units on Order'"
   [sortable]="true"
   [resizable]="true"
@@ -48,13 +46,13 @@
   </data-table-column>
 
   <data-table-column
-  [property]="'reorderlevel'"  
+  [property]="'ReorderLevel'"  
   [header]="'Reorder Level'"
   [sortable]="true"
   [resizable]="true"
   >
   </data-table-column>
-
+<!-- 
   <data-table-column
     [property]="'price'"  
     [header]="'Price'"
@@ -64,13 +62,14 @@
     <ng-template #dataTableCell let-item="item">
       {{ item.price | currency:'PhP':true }}
     </ng-template>
-  </data-table-column>
+  </data-table-column> -->
 
   <data-table-column
     [property]="'$key'"  
+    [header]="'Action'"
   >
     <ng-template #dataTableCell let-item="item">
-      <a [routerLink]="['/admin/product-list', item.$key]">Edit</a>
+      <a [routerLink]="['/admin/product-list', item.$id]">Edit</a>
     </ng-template>
   </data-table-column>
 

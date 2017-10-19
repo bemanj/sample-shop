@@ -54,7 +54,7 @@ export class OrderDetailComponent implements OnInit {
   }
 
   remove(item){
-    console.log(item.SODetailsID);
+    console.log(item);
     this.orderdetailList.delete(item.SODetailsID).subscribe();
     // this.router.navigate(['/sales-order', item]);
   }

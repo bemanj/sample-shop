@@ -11,7 +11,7 @@ export class InventoryListService {
   //64770 //57483
   //64770 //57483
   // private _url = 'http://localho3st:50524/api/'
-  // http://localhost:50524/ 
+  // ht4tp://192.168.1.95/ 
   private _url = 'http://localhost:50524/api/' 
 
   constructor(private http: Http) { }
