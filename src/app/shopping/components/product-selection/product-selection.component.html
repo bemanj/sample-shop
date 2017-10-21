@@ -19,7 +19,34 @@
     (reload)="reloadItems($event)">
   
     <data-table-column
-    [property]="'ProductName'"  
+    [property]="'ProductId'"  
+    [header]="'Product ID'"
+    [sortable]="true"
+    [resizable]="true"
+    [visible]="false"
+    >
+    </data-table-column>
+
+    <data-table-column
+    [property]="'CategoryID'"  
+    [header]="'Category ID'"
+    [sortable]="true"
+    [resizable]="true"
+    [visible]="false"
+    >
+    </data-table-column>
+
+    <data-table-column
+    [property]="'Article'"  
+    [header]="'Article'"
+    [sortable]="true"
+    [resizable]="true"
+    [visible]="true"
+    >
+    </data-table-column>
+
+    <data-table-column
+    [property]="'ProductTitle'"  
     [header]="'Product'"
     [sortable]="true"
     [resizable]="true"
@@ -65,7 +92,7 @@
     [resizable]="true"
     >
     <ng-template #dataTableCell let-item="item">
-      {{ item.Price | currency:'PhP':true }}
+      P {{ item.Price | number:'1.2' }}
     </ng-template>
     </data-table-column>
   
@@ -76,7 +103,7 @@
   [resizable]="true"
   >
   <ng-template #dataTableCell let-item="item">
-    {{ item.AcquisitionPrice | currency:'PhP':true }}
+    P {{ item.AcquisitionPrice | number:'1.2' }}
   </ng-template>
   </data-table-column>
   

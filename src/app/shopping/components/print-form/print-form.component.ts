@@ -66,18 +66,34 @@ export class PrintFormComponent implements OnInit, OnDestroy {
     <html>
     <head>
         <meta charset="utf-8" />
-        <title> Receipt</title>
         <style>
-            .val td {
-                border: 1px solid black;
-                border-collapse: collapse;
-            }
+          .val td {
+              border: 1px solid black;
+              border-collapse: collapse;
+          }
+          .bordered {
+            border: 1px solid black;
+                  border-collapse: collapse;
+          }
+          .bottomborder{
+            border-bottom: 1px solid black;
+          }
+          .topborder{
+            border-top : 1px solid black;
+          }
+          .txtcenter {
+            text-align: center;
+          }
+          .txtleft {
+            text-align: left;
+          }
+          .txtright {
+            text-align: right;
+          }
         </style>
-    
-    
     </head>
     
-    <body class="text-left" onload="window.print();window.close()">${printContents}
+    <body onload="window.print();window.close()">${printContents}
     </body>
     </html>
     

@@ -19,7 +19,7 @@
   (reload)="reloadItems($event)">
 
   <data-table-column
-  [property]="'ProductName'"  
+  [property]="'ProductTitle'"  
   [header]="'Product'"
   [sortable]="true"
   [resizable]="true"
@@ -33,7 +33,7 @@
   [resizable]="true"
   >
   <ng-template #dataTableCell let-item="item">
-    {{ item.UnitPrice | currency:'PhP':true }}
+    P {{ item.UnitPrice | number:'1.2' }}
   </ng-template>
   </data-table-column>
 
@@ -52,7 +52,7 @@
   [resizable]="true"
   >
   <ng-template #dataTableCell let-item="item">
-    {{ item.TotalAmount | currency:'PhP':true }}
+    P {{ item.TotalAmount | number:'1.2' }}
   </ng-template>
   </data-table-column>
   

@@ -18,5 +18,6 @@ export interface InventoryList {
     CompanyName: string;
     CategoryID: number;
     Action:string;
+    Article:string;
     OrderQuantity: number;
   }

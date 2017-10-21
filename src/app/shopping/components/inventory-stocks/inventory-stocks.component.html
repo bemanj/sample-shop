@@ -71,6 +71,14 @@
           </div>  
         
           <div class="form-group">
+            <label for="article">Article</label>
+            <input #article="ngModel" [(ngModel)]="inventory.Article" name="article" id="article" type="text" class="form-control" required>
+            <!-- <div class="alert alert-danger" *ngIf="article.touched && UOM.invalid">
+              UOM is required.
+            </div> -->
+          </div>   
+
+          <div class="form-group">
             <label for="uom">UOM</label>
             <input #uom="ngModel" [(ngModel)]="inventory.UOM" name="uom" id="uom" type="text" class="form-control" required>
             <!-- <div class="alert alert-danger" *ngIf="UOM.touched && UOM.invalid">

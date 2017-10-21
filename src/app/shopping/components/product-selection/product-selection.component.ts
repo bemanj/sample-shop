@@ -73,12 +73,13 @@ export class ProductSelectionComponent implements OnInit {
           , SalesOrderNumber: 'SO' + id
           , ProductId: item.ProductId
           , UnitPrice: item.Price
+          , Article: item.Article
           , UOM: item.UOM
           , Quantity: item.OrderQuantity
           , Discount: 0
           , TotalAmount: this.totalAmount
         }
-        
+        console.log(postdata);
         this.orderdetailService.create(postdata).subscribe(data => this.postData$ = data);
         this.router.navigate(['/sales-order', id]);
       });

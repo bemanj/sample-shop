@@ -38,6 +38,7 @@ export class InventoryStocksComponent implements OnInit {
         , SupplierId: inventory.supplierid
         , ProductId: inventory.productid
         , Brand: inventory.brand
+        , Article: inventory.article
         , UOM: inventory.uom
         , Quantity: inventory.quantity
         , Price: inventory.price
@@ -58,6 +59,7 @@ export class InventoryStocksComponent implements OnInit {
         , SupplierId: inventory.supplierid
         , ProductId: inventory.productid
         , Brand: inventory.brand
+        , Article: inventory.article
         , UOM: inventory.uom
         , Quantity: inventory.quantity
         , Price: inventory.price
