@@ -7,8 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DataTableModule } from 'angular-4-data-table/dist';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+// import { AngularFireAuthModule } from 'angularfire2/auth';
+// import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import { CustomFormsModule } from 'ng2-validation';
 
@@ -33,8 +33,8 @@ import { UserService } from './services/user.service';
     FormsModule,
     CustomFormsModule,
     DataTableModule,
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
+    // AngularFireDatabaseModule,
+    // AngularFireAuthModule,
     HttpModule,
     DateTimePickerModule,
     BrowserModule,
@@ -56,8 +56,8 @@ import { UserService } from './services/user.service';
     DateTimePickerModule,
     BrowserModule,
     BrowserAnimationsModule,
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
+    // AngularFireDatabaseModule,
+    // AngularFireAuthModule,
     NgbModule.forRoot().ngModule,
   ],
   providers: [

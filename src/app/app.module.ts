@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { AngularFireModule } from 'angularfire2';
+// import { AngularFireModule } from 'angularfire2';
 
 import { environment } from './../environments/environment';
 import { AdminModule } from './admin/admin.module';
@@ -23,7 +23,7 @@ import { ShoppingModule } from './shopping/shopping.module';
     AdminModule,
     ShoppingModule,
     CoreModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    // AngularFireModule.initializeApp(environment.firebase),
     RouterModule.forRoot([
       { path: '', component: ProductsComponent },
       { path: 'login', component: LoginComponent },

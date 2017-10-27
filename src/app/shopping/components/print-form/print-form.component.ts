@@ -1,5 +1,5 @@
 import { Product } from '../../../shared/models/product';
-import { AngularFireDatabase } from 'angularfire2/database';
+// import { AngularFireDatabase } from 'angularfire2/database';
 import { ShoppingCart } from '../../../shared/models/shopping-cart';
 import { OrderService } from '../../../shared/services/order.service';
 import { PrintService } from './../../../shared/services/print.service';
@@ -7,18 +7,18 @@ import { ActivatedRoute } from '@angular/router';
 import { SalesReportService } from './../../../shared/services/sales-service/sales-report.service';
 import { Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import 'rxjs/add/operator/take'; 
-import 'rxjs/add/operator/do'; 
-import 'rxjs/add/operator/map'; 
+import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
 import { Subscription } from 'rxjs/Subscription';
 import { AngularPrint } from 'angular-print';
 
 @Component({
-  selector: 'print-form',
+  selector: 'app-print-form',
   templateUrl: './print-form.component.html',
   styleUrls: ['./print-form.component.css']
 })
-export class PrintFormComponent implements OnInit, OnDestroy { 
+export class PrintFormComponent implements OnInit, OnDestroy {
     orderHeader = {};
     order;
     orderItems;
@@ -27,17 +27,17 @@ export class PrintFormComponent implements OnInit, OnDestroy {
     subscription: Subscription;
 
   constructor(
-  private db : AngularFireDatabase,
-  private router: Router, 
+  // private db : AngularFireDatabase,
+  private router: Router,
   private route: ActivatedRoute,
   private printService: PrintService,
-  private salesreportservice : SalesReportService,
+  private salesreportservice: SalesReportService,
   private orderService: OrderService) {
 
     // this.id = this.route.snapshot.paramMap.get('id');
     // this.order = orderService.getOrdersByOrderId(this.id);
 
-    // this.id = this.route.snapshot.paramMap.get('id') 
+    // this.id = this.route.snapshot.paramMap.get('id')
     // if (this.id) this.printService.get(this.id).take(1).subscribe(o => {
     //     this.order = o
     //     console.log(this.order)
@@ -124,16 +124,16 @@ export class PrintFormComponent implements OnInit, OnDestroy {
     // this.subscription.unsubscribe();
   }
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id') 
+    this.id = this.route.snapshot.paramMap.get('id');
     if (this.id) {
         this.salesreportservice.getfSO(this.id).take(1).subscribe(p => {
-            this.orderHeader= p
-            console.log('so datalist')
-            console.log(this.orderHeader)
+            this.orderHeader = p;
+            console.log('so datalist');
+            console.log(this.orderHeader);
             this.printService.get(this.id).subscribe(o => {
-                this.order = o
-                console.log(this.order)
-                
+                this.order = o;
+                console.log(this.order);
+
             });
           });
     }
