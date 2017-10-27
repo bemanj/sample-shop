@@ -6,7 +6,7 @@ export class CategoryService {
 
   // constructor(private db: AngularFireDatabase) { }
 
-  // getAll() { 
+  // getAll() {
   //   // console.log(this.db.list('/categories'));
   //   return this.db.list('/categories', {
   //     query: {
