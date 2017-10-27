@@ -9,14 +9,14 @@ import { DataTableResource } from 'angular-4-data-table';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnDestroy {
   products: ProductList[];
   subscription: Subscription;
   tableResource: DataTableResource<ProductList>;
   items: ProductList[] = [];
   itemCount: number;
 
-  constructor(private productListService: ProductListService) { 
+  constructor(private productListService: ProductListService) {
     this.subscription = this.productListService.getAll()
       .subscribe(products => {
         this.products = products;
@@ -33,14 +33,16 @@ export class ProductListComponent implements OnInit {
   }
 
   reloadItems(params) {
-    if (!this.tableResource) return;
+    if (!this.tableResource) {
+       return;
+    }
 
     this.tableResource.query(params)
-      .then(items => this.items = items);    
+      .then(items => this.items = items);
   }
 
-  filter(query: string) { 
-    let filteredProducts = (query) ?
+  filter(query: string) {
+    const filteredProducts = (query) ?
       this.products.filter(p => p.title.toLowerCase().includes(query.toLowerCase())) :
       this.products;
 
