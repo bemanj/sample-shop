@@ -16,12 +16,12 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   items: Product[] = [];
   itemCount: number;
 
-  constructor(private productService: ProductService) { 
-    this.subscription = this.productService.getAll()
-      .subscribe(products => {
-        this.products = products;
-        this.initializeTable(products);
-      });
+  constructor(private productService: ProductService) {
+    // this.subscription = this.productService.getAll()
+    //   .subscribe(products => {
+    //     this.products = products;
+    //     this.initializeTable(products);
+    //   });
   }
 
   private initializeTable(products: Product[]) {
@@ -33,14 +33,16 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   }
 
   reloadItems(params) {
-    if (!this.tableResource) return;
+    if (!this.tableResource) {
+       return;
+    }
 
     this.tableResource.query(params)
-      .then(items => this.items = items);    
+      .then(items => this.items = items);
   }
 
-  filter(query: string) { 
-    let filteredProducts = (query) ?
+  filter(query: string) {
+    const filteredProducts = (query) ?
       this.products.filter(p => p.title.toLowerCase().includes(query.toLowerCase())) :
       this.products;
 
