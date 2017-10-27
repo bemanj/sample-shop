@@ -23,11 +23,11 @@ export class AuthService {
     let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
     localStorage.setItem('returnUrl', returnUrl);
     
-    this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+    // this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
   }
 
   logout() { 
-    this.afAuth.auth.signOut();
+    // this.afAuth.auth.signOut();
   }
 
   get appUser$() : Observable<AppUser> {
