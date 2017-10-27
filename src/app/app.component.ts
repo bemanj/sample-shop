@@ -10,16 +10,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   constructor(private userService: UserService, private auth: AuthService, router: Router) {
-    auth.user$.subscribe(user => {
-      if (!user) return; 
+    // auth.user$.subscribe(user => {
+    //   if (!user) return; 
 
-      userService.save(user);
+    //   userService.save(user);
 
-      let returnUrl = localStorage.getItem('returnUrl');
-      if (!returnUrl) return; 
+    //   let returnUrl = localStorage.getItem('returnUrl');
+    //   if (!returnUrl) return; 
 
-      localStorage.removeItem('returnUrl');
-      router.navigateByUrl(returnUrl);
-    });
+    //   localStorage.removeItem('returnUrl');
+    //   router.navigateByUrl(returnUrl);
+    // });
   }
 }

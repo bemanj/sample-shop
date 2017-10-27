@@ -47,12 +47,12 @@ export class PrintFormComponent implements OnInit, OnDestroy {
     // console.log(this.orderItems.title);
   }
 
-  getItems1 (id){
-    let item;
-     return this.db.list('/orders/'+ id + '/items/').subscribe(orders => item = orders);
+  getItems1 (id) {
+    // let item;
+    //  return this.db.list('/orders/'+ id + '/items/').subscribe(orders => item = orders);
   }
 
-  backtoSO(id){
+  backtoSO(id) {
     this.router.navigate(['/sales-order', id]);
   }
 
@@ -92,11 +92,10 @@ export class PrintFormComponent implements OnInit, OnDestroy {
           }
         </style>
     </head>
-    
+
     <body onload="window.print();window.close()">${printContents}
     </body>
     </html>
-    
       `
     );
     popupWin.document.close();

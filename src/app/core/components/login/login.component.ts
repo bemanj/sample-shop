@@ -7,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(private auth: AuthService) { 
+  constructor(private auth: AuthService) {
   }
 
-  login() { 
-    this.auth.login();
+  login() {
+    // this.auth.login();
   }
 }

@@ -26,28 +26,28 @@ export class ProductsComponent implements OnInit  {
   }
 
   async ngOnInit() {
-    this.cart$ = await this.shoppingCartService.getCart();
+    // this.cart$ = await this.shoppingCartService.getCart();
     this.populateProducts();
   }
 
-  private populateProducts() { 
-    this.productService
-      .getAll()
-      .switchMap(products => {
-        this.products = products;
-        return this.route.queryParamMap;
-      })
-      .subscribe(params => {
-        this.category = params.get('category');
-        console.log(this.category);
-        this.applyFilter();      
-      });
+  private populateProducts() {
+    // this.productService
+    //   .getAll()
+    //   .switchMap(products => {
+    //     this.products = products;
+    //     return this.route.queryParamMap;
+    //   })
+    //   .subscribe(params => {
+    //     this.category = params.get('category');
+    //     console.log(this.category);
+    //     this.applyFilter();
+    //   });
   }
 
 
-  private applyFilter() { 
-    this.filteredProducts = (this.category) ? 
-    this.products.filter(p => p.category === this.category) : 
+  private applyFilter() {
+    this.filteredProducts = (this.category) ?
+    this.products.filter(p => p.category === this.category) :
     this.products;
   }
 }

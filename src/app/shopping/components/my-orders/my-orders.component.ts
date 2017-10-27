@@ -10,11 +10,11 @@ import 'rxjs/add/operator/switchMap';
 })
 export class MyOrdersComponent {
   orders$;
-  
+
   constructor(
     private authService: AuthService,
-    private orderService: OrderService) { 
+    private orderService: OrderService) {
 
-    this.orders$ = authService.user$.switchMap(u => orderService.getOrdersByUser(u.uid));
+    // this.orders$ = authService.user$.switchMap(u => orderService.getOrdersByUser(u.uid));
   }
 }

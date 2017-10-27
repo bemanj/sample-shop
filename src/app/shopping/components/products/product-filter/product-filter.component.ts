@@ -3,7 +3,7 @@ import { CategoryService } from '../../../../shared/services/category.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'product-filter',
+  selector: 'app-product-filter',
   templateUrl: './product-filter.component.html',
   styleUrls: ['./product-filter.component.css']
 })
@@ -13,7 +13,7 @@ export class ProductFilterComponent implements OnInit {
 
   constructor(categoryService: CategoryService) {
   // constructor(categoryService: CategoryPostService) {
-    this.categories$ = categoryService.getAll();
+    // this.categories$ = categoryService.getAll();
     // .map(res => res.json())
     // .subscribe(name => this.categories$ = name);
   }
