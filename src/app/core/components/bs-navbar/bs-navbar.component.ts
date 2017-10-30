@@ -9,7 +9,7 @@ import { AuthService } from '../../../shared/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-bs-navbar',
+  selector: 'bs-navbar',
   templateUrl: './bs-navbar.component.html',
   styleUrls: ['./bs-navbar.component.css']
 })
@@ -34,13 +34,14 @@ export class BsNavbarComponent implements OnInit {
     const date = new Date();
 
     const sodata = {
-      OrderDate: date,
       Customer: '',
+      OnlineOrderFlag: '',
       SubTotal: 0, // orderHeader.soSubTotal,
       TaxAmt: 0, // orderHeader.soTaxAmt,
       Freight: 0, // orderHeader.soFreight,
+      TotalDue: 0,
       Comment: 'test', // orderHeader.soComment,
-      ModifiedDate: date
+      Fulfilled:''
     };
 
   this.salesreportservice.create(sodata).subscribe(data => {

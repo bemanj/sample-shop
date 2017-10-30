@@ -1,23 +1,23 @@
 import { ParentDialogComponent } from './components/parent-dialog/parent-dialog.component';
 import { ProductSelectionComponent } from '../shopping/components/product-selection/product-selection.component';
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
-import { ProductListComponent } from './../admin/components/product-list/product-list/product-list.component';
+// import { ProductListComponent } from './../admin/components/product-list/product-list/product-list.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from 'shared/services/auth-guard.service';
 
 import { SharedModule } from './../shared/shared.module';
-import { CheckOutComponent } from './components/check-out/check-out.component';
+// import { CheckOutComponent } from './components/check-out/check-out.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
-import { OrderSuccessComponent } from './components/order-success/order-success.component';
+// import { OrderSuccessComponent } from './components/order-success/order-success.component';
 import { ProductFilterComponent } from './components/products/product-filter/product-filter.component';
 import { ProductsComponent } from './components/products/products.component';
 import { SalesOrderNewComponent } from './components/sales-order/sales-order-new/sales-order-new.component';
 import { SalesOrderComponent } from './components/sales-order/sales-order.component';
 import { SalesReportComponent } from './components/sales-order/sales-report/sales-report.component';
 import { ShippingFormComponent } from './components/shipping-form/shipping-form.component';
-import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary/shopping-cart-summary.component';
-import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+// import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary/shopping-cart-summary.component';
+// import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { PrintFormComponent } from './components/print-form/print-form.component';
 import { InventoryStocksComponent } from './components/inventory-stocks/inventory-stocks.component';
 import { InventoryListComponent } from './components/inventory-list/inventory-list.component';
@@ -28,9 +28,9 @@ import { InventoryListComponent } from './components/inventory-list/inventory-li
     SharedModule,
     RouterModule.forChild([
       { path: 'products', component: ProductsComponent },
-      { path: 'shopping-cart', component: ShoppingCartComponent },
-      { path: 'check-out', component: CheckOutComponent,  },
-      { path: 'order-success/:id', component: OrderSuccessComponent,  },
+      // { path: 'shopping-cart', component: ShoppingCartComponent },
+      // { path: 'check-out', component: CheckOutComponent,  },
+      // { path: 'order-success/:id', component: OrderSuccessComponent,  },
       { path: 'my/orders', component: MyOrdersComponent,  },
       { path: 'sales-report', component: SalesReportComponent,  },
       // { path: 'sales-order', component: SalesOrderComponent,  },
@@ -50,13 +50,13 @@ import { InventoryListComponent } from './components/inventory-list/inventory-li
     SalesReportComponent,
     SalesOrderComponent,
     SalesOrderNewComponent,
-    ShoppingCartComponent,
+    // ShoppingCartComponent,
     PrintFormComponent,
-    CheckOutComponent,
-    OrderSuccessComponent,
+    // CheckOutComponent,
+    // OrderSuccessComponent,
     MyOrdersComponent,
     ProductFilterComponent,
-    ShoppingCartSummaryComponent,
+    // ShoppingCartSummaryComponent,
     ShippingFormComponent,
     PrintFormComponent,
     InventoryStocksComponent,

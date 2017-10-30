@@ -1,3 +1,4 @@
+import { ConfigService } from './services/config.service';
 import { OrderDetailService } from './services/order-detail.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,8 +13,8 @@ import { DataTableModule } from 'angular-4-data-table/dist';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import { CustomFormsModule } from 'ng2-validation';
 
-import { ProductCardComponent } from './components/product-card/product-card.component';
-import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
+// import { ProductCardComponent } from './components/product-card/product-card.component';
+// import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { CategoryPostService } from './services/category-post.service';
@@ -42,12 +43,12 @@ import { UserService } from './services/user.service';
     NgbModule.forRoot(),
   ],
   declarations: [
-    ProductCardComponent,
-    ProductQuantityComponent,
+    // ProductCardComponent,
+    // ProductQuantityComponent,
   ],
   exports: [
-    ProductCardComponent,
-    ProductQuantityComponent,
+    // ProductCardComponent,
+    // ProductQuantityComponent,
     CommonModule,
     FormsModule,
     CustomFormsModule,
@@ -63,6 +64,7 @@ import { UserService } from './services/user.service';
   providers: [
     AuthService,
     AuthGuard,
+    ConfigService,
     UserService,
     CategoryService,
     CategoryPostService,

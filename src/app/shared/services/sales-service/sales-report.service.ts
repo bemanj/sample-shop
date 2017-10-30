@@ -1,3 +1,4 @@
+import { ConfigService } from './../config.service';
 import { Http, Response, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
@@ -6,20 +7,22 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class SalesReportService {
 
-  private _url = 'http://localhost:50524/api/' //64770 //64770
+  private _url: string;
   private name;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private configService: ConfigService) { 
+    this._url = configService.getApiURI();
+  }
 
   create(body) {
     // console.log(body);
-        return this.http.post(this._url + 'SalesOrderHeaders/', body)
+        return this.http.post(this._url + 'SalesOrderHeader/', body)
         .do(this.logResponse)
         .map((res: Response) => res.json());
       }
 
   update(soid, sodata) { 
-    return this.http.put(this._url + 'SalesOrderHeaders/' + soid, sodata)
+    return this.http.put(this._url + 'SalesOrderHeader/' + soid, sodata)
     .do(this.logResponse)
     .map((res: Response) => res.json());
   }
@@ -33,7 +36,7 @@ export class SalesReportService {
 
   // sales orders
   getfSO(id) { 
-    return this.http.get(this._url + 'SalesOrderHeaders/' + id)
+    return this.http.get(this._url + 'SalesOrderHeader/' + id)
    .do(this.logResponse)
    .map((res: Response) => res.json());
 }

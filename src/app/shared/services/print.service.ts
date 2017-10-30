@@ -1,3 +1,4 @@
+import { ConfigService } from './config.service';
 import { Http, Response, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
@@ -6,12 +7,11 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class PrintService {
 
-  // http://localhost/MNMSolutions.Web.Api
-  // private _url = 'http://3localhost:64770/api/' //64770 //57483
-  // http://localhost:50524/
-  private _url = 'http://localhost:50524/api/' //64770 //57483
+  private _url: string;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private configService: ConfigService) { 
+    this._url = configService.getApiURI();
+  }
 
   create(body) { 
     console.log(body);

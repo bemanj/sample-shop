@@ -1,3 +1,4 @@
+import { ConfigService } from './config.service';
 import { Http, Response, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
@@ -6,15 +7,12 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class InventoryListService {
 
-  // http://localhost/3MNMSolutions.Web.Api
-  // private _url = 'http://localhost):64770/api/' 
-  //64770 //57483
-  //64770 //57483
-  // private _url = 'http://localho3st:50524/api/'
-  // ht4tp://192.168.1.95/ 
-  private _url = 'http://localhost:50524/api/' 
+  
+  private _url: string;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private configService: ConfigService) { 
+    this._url = configService.getApiURI();
+  }
 
   create(body) { 
     console.log(body);

@@ -1,12 +1,15 @@
+import { ConfigService } from './config.service';
 import { Http, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ProductListService {
 
-  private _url = 'http://localhost:50524/api/' //64770 //64770
-
-  constructor(private http: Http) { }
+  private _url: string;
+  
+    constructor(private http: Http, private configService: ConfigService) { 
+      this._url = configService.getApiURI();
+    }
 
   create(body) {
     // console.log(body);
