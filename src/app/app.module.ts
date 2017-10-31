@@ -1,11 +1,9 @@
-import { BsNavbarComponent } from './core/components/bs-navbar/bs-navbar.component';
-import { RouterModule } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
+import { AdminModule } from './admin/admin.module';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
-import { environment } from './../environments/environment';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './core/components/login/login.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { ProductsComponent } from './shopping/components/products/products.component';
@@ -18,11 +16,12 @@ import { ShoppingModule } from './shopping/shopping.module';
   imports: [
     BrowserModule,
     SharedModule,
+    AdminModule,
     ShoppingModule,
     CoreModule,
     RouterModule.forRoot([
       // { path: '', component: BsNavbarComponent },
-      // { path: '', component: ProductsComponent },
+       { path: '', component: ProductsComponent },
       // { path: 'login', component: LoginComponent },
     ])
   ],

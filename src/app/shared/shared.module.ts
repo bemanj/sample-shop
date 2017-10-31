@@ -1,5 +1,5 @@
-import { ConfigService } from './services/config.service';
-import { OrderDetailService } from './services/order-detail.service';
+import { ConfigService } from './services/config/config.service';
+import { OrderDetailService } from './services/order/order-detail.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
@@ -15,18 +15,18 @@ import { CustomFormsModule } from 'ng2-validation';
 
 // import { ProductCardComponent } from './components/product-card/product-card.component';
 // import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
-import { AuthGuard } from './services/auth-guard.service';
-import { AuthService } from './services/auth.service';
-import { CategoryPostService } from './services/category-post.service';
-import { CategoryService } from './services/category.service';
-import { InventoryListService } from './services/inventory-list.service';
-import { OrderService } from './services/order.service';
-import { PrintService } from './services/print.service';
-import { ProductListService } from './services/product-list.service';
-import { ProductService } from './services/product.service';
+import { AuthGuard } from './services/auth/auth-guard.service';
+import { AuthService } from './services/auth/auth.service';
+import { CategoryPostService } from './services/category/category-post.service';
+import { CategoryService } from './services/category/category.service';
+import { InventoryListService } from './services/inventory/inventory-list.service';
+import { OrderService } from './services/order/order.service';
+import { PrintService } from './services/print/print.service';
+import { ProductListService } from './services/product/product-list.service';
+import { ProductService } from './services/product/product.service';
 import { SalesReportService } from './services/sales-service/sales-report.service';
-import { ShoppingCartService } from './services/shopping-cart.service';
-import { UserService } from './services/user.service';
+import { ShoppingCartService } from './services/shopping/shopping-cart.service';
+import { UserService } from './services/user/user.service';
 
 @NgModule({
   imports: [

@@ -1,4 +1,4 @@
-import { ConfigService } from './../config.service';
+import { ConfigService } from './../config/config.service';
 import { Http, Response, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';

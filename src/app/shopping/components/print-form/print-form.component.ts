@@ -1,8 +1,8 @@
+import { PrintService } from './../../../shared/services/print/print.service';
+import { OrderService } from './../../../shared/services/order/order.service';
 import { Product } from '../../../shared/models/product';
 // import { AngularFireDatabase } from 'angularfire2/database';
 import { ShoppingCart } from '../../../shared/models/shopping-cart';
-import { OrderService } from '../../../shared/services/order.service';
-import { PrintService } from './../../../shared/services/print.service';
 import { ActivatedRoute } from '@angular/router';
 import { SalesReportService } from './../../../shared/services/sales-service/sales-report.service';
 import { Router } from '@angular/router';

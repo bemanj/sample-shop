@@ -1,5 +1,5 @@
+import { ShoppingCartService } from './../shopping/shopping-cart.service';
 import { forEach } from '@angular/router/src/utils/collection';
-import { ShoppingCartService } from './shopping-cart.service';
 // import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 

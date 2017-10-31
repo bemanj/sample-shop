@@ -3,9 +3,8 @@ import { SalesReportService } from './../../../shared/services/sales-service/sal
 import { Router } from '@angular/router';
 import { ShoppingCart } from '../../../shared/models/shopping-cart';
 import { Observable } from 'rxjs/Observable';
-import { ShoppingCartService } from '../../../shared/services/shopping-cart.service';
 import { AppUser } from '../../../shared/models/app-user';
-import { AuthService } from '../../../shared/services/auth.service';
+import { AuthService } from '../../../shared/services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -19,8 +18,7 @@ export class BsNavbarComponent implements OnInit {
 
   constructor(private auth: AuthService,
     private router: Router,
-    private salesreportservice: SalesReportService,
-    private shoppingCartService: ShoppingCartService) {
+    private salesreportservice: SalesReportService) {
   }
 
   async ngOnInit() {

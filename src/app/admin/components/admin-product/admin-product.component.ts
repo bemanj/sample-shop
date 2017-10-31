@@ -8,12 +8,14 @@ import { DataTableResource } from 'angular-4-data-table';
 import 'rxjs/add/operator/switchMap';
 import { Subscription } from 'rxjs/Subscription';
 
+
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  selector: 'app-admin-product',
+  templateUrl: './admin-product.component.html',
+  styleUrls: ['./admin-product.component.css']
 })
-export class ProductsComponent implements OnInit  {
+export class AdminProductComponent implements OnInit {
+
   subscription: Subscription;
   tableResource: DataTableResource<ProductList>;
   items: ProductList[] = [];
@@ -54,14 +56,4 @@ export class ProductsComponent implements OnInit  {
       .then(items => this.items = items);
   }
 
-
-
-
-
-
-  // private applyFilter() {
-  //   this.filteredProducts = (this.category) ?
-  //   this.products.filter(p => p.category === this.category) :
-  //   this.products;
-  // }
 }

@@ -1,10 +1,10 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { OrderDetailService } from './../../../shared/services/order-detail.service';
+import { OrderDetailService } from './../../../shared/services/order/order-detail.service';
 import { SelectedProduct } from './../../../shared/models/selected-product';
 import { ParentDialogComponent } from './../parent-dialog/parent-dialog.component';
 import { SalesOrder } from './../../../shared/models/sales-order';
 import { DataTableResource } from 'angular-4-data-table';
-import { InventoryListService } from './../../../shared/services/inventory-list.service';
+import { InventoryListService } from './../../../shared/services/inventory/inventory-list.service';
 import { InventoryList } from './../../../shared/models/inventory-list';
 import { Component, OnInit, Input} from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';

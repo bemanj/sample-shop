@@ -1,10 +1,11 @@
-import { InventoryListService } from './../../../shared/services/inventory-list.service';
+import 'rxjs/add/operator/take';
+
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { CategoryService } from '../../../shared/services/category.service';
-import { Component, OnInit } from '@angular/core';
-import 'rxjs/add/operator/take'; 
-import { Subscription } from 'rxjs/Subscription';
+
+import { CategoryService } from './../../../shared/services/category/category.service';
+import { InventoryListService } from './../../../shared/services/inventory/inventory-list.service';
 
 
 @Component({

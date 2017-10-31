@@ -1,4 +1,4 @@
-import { CategoryService } from '../../../../shared/services/category.service';
+import { CategoryService } from './../../../../shared/services/category/category.service';
 // import { CategoryPostService } from '../../../../shared/services/category-post.service';
 import { Component, OnInit, Input } from '@angular/core';
 

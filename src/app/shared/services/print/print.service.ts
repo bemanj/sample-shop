@@ -5,10 +5,10 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
 @Injectable()
-export class SalesOrderdetailsService {
+export class PrintService {
 
   private _url: string;
-  
+
   constructor(private http: Http, private configService: ConfigService) { 
     this._url = configService.getApiURI();
   }
@@ -22,7 +22,7 @@ export class SalesOrderdetailsService {
 
   getAll() { 
     // console.log(this.http.get(this.url + 'category1'));
-  return this.http.get(this._url + 'SalesOrderDetails')
+  return this.http.get(this._url + 'view_SalesOrderDetails')
    .do(this.logResponse)
    .map((res: Response) => res.json());
   }
@@ -32,7 +32,7 @@ export class SalesOrderdetailsService {
   }
 
   get(inventoryId) { 
-    return this.http.get(this._url + 'SalesOrderDetails/' + inventoryId)
+    return this.http.get(this._url + 'InventoryView/' + inventoryId)
     .do(this.logResponse)
     .map((res: Response) => res.json());
   }
@@ -43,8 +43,8 @@ export class SalesOrderdetailsService {
   }
 
   delete(inventoryId) { 
-    this.http.delete(this._url + 'SalesOrderDetails/' + inventoryId)
+    return this.http.delete(this._url + 'SalesOrderDetails/' + inventoryId)
     .do(this.logResponse)
-    .subscribe((res: Response) => res.json());;
+    .map((res: Response) => res.json());;
   }
 }

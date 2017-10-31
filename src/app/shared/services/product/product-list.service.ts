@@ -1,4 +1,4 @@
-import { ConfigService } from './config.service';
+import { ConfigService } from './../config/config.service';
 import { Http, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 

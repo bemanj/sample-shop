@@ -1,4 +1,4 @@
-import { CategoryPostService } from './../../../../shared/services/category-post.service';
+import { CategoryPostService } from './../../../../shared/services/category/category-post.service';
 import { SalesReportService } from './../../../../shared/services/sales-service/sales-report.service';
 import { SalesReport } from './../../../../shared/models/sales-report';
 import { Router } from '@angular/router';

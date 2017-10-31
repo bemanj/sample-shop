@@ -1,5 +1,5 @@
+import { InventoryListService } from './../../../shared/services/inventory/inventory-list.service';
 import { DataTableResource } from 'angular-4-data-table';
-import { InventoryListService } from './../../../shared/services/inventory-list.service';
 import { InventoryList } from './../../../shared/models/inventory-list';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';

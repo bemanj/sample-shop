@@ -1,9 +1,9 @@
+import { InventoryListService } from './../../../shared/services/inventory/inventory-list.service';
+import { OrderDetailService } from './../../../shared/services/order/order-detail.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OrderDetailService } from '../../../shared/services/order-detail.service';
 import { OrderDetailList } from '../../../shared/models/order-detail';
 import { SalesOrder } from './../../../shared/models/sales-order';
 import { DataTableResource } from 'angular-4-data-table';
-import { InventoryListService } from './../../../shared/services/inventory-list.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -24,19 +24,17 @@ export class OrderDetailComponent implements OnInit {
 
   constructor(private orderdetailList: OrderDetailService,
     private router: Router,
-    private route: ActivatedRoute ) { 
+    private route: ActivatedRoute ) {
     this.route.paramMap
     .subscribe(params => {
-      let id = params.get('id');
+      const id = params.get('id');
       this.subscription = this.orderdetailList.get(id)
       .subscribe(orders => {
         this.orderdetails = orders;
         this.initializeTable(orders);
       });
     });
-    
-    
-  }
+    }
 
   private initializeTable(orderdetailList: OrderDetailList[]) {
     this.tableResource = new DataTableResource(orderdetailList);

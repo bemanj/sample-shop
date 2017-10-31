@@ -1,6 +1,6 @@
+import { AuthService } from './../../../shared/services/auth/auth.service';
+import { OrderService } from './../../../shared/services/order/order.service';
 import { ShoppingCart } from '../../../shared/models/shopping-cart';
-import { OrderService } from '../../../shared/services/order.service';
-import { AuthService } from '../../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
