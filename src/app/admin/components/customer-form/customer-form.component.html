@@ -1,50 +1,71 @@
 <div class="row">
-  <form #f="ngForm" id="f">
-    <div class="form-group">
-      <label for="company" >Company</label>
-      <input #company="ngModel" ngModel [(ngModel)]="c.CompanyName" name="company" type="text" class="form-control" id="company">
-    </div>
+    <div class="col-md-6">
+      <form #f="ngForm" (ngSubmit)="save(f.value)">
+        <div class="form-group">
+          <label for="company" >Company</label>
+          <input #company="ngModel" ngModel [(ngModel)]="c.CompanyName" name="company" type="text" class="form-control" id="company">
+          <div class="alert alert-danger" *ngIf="company.touched && company.invalid">
+            Company is required.
+          </div>
+        </div>
 
-    <div class="form-group">
-        <label for="contactname" >Contact Name</label>
-        <input #contactname="ngModel" ngModel [(ngModel)]="c.ContactName" name="contactname" type="text" class="form-control" id="contactname">
-    </div>
+        <div class="form-group">
+            <label for="contactname" >Contact Name</label>
+            <input #contactname="ngModel" ngModel [(ngModel)]="c.ContactName" name="contactname" type="text" class="form-control" id="contactname">
+        </div>
 
-    <div class="form-group">
-        <label for="contacttitle" >Contact Title</label>
-        <input #contacttitle="ngModel" ngModel [(ngModel)]="c.ContactTitle" name="contacttitle" type="text" class="form-control" id="contacttitle">
-    </div>
+        <div class="form-group">
+            <label for="contacttitle" >Contact Title</label>
+            <input #contacttitle="ngModel" ngModel [(ngModel)]="c.ContactTitle" name="contacttitle" type="text" class="form-control" id="contacttitle">
+        </div>
 
-    <div class="form-group">
-        <label for="address" >Address</label>
-        <input #address="ngModel" ngModel [(ngModel)]="c.Address" name="address" type="text" class="form-control" id="address">
-    </div>
+        <div class="form-group">
+            <label for="address" >Address</label>
+            <input #address="ngModel" ngModel [(ngModel)]="c.Address" name="address" type="text" class="form-control" id="address">
+        </div>
 
-    <div class="form-group">
-        <label for="region" >Region</label>
-        <input #region="ngModel" ngModel [(ngModel)]="c.Region" name="region" type="text" class="form-control" id="region">
-    </div>
+        <div class="form-group">
+            <label for="city" >City</label>
+            <input #city="ngModel" ngModel [(ngModel)]="c.City" name="city" type="text" class="form-control" id="city">
+        </div>
 
-    <div class="form-group">
-        <label for="postal" >Postal Code</label>
-        <input #postal="ngModel" ngModel [(ngModel)]="c.PostalCode" name="postal" type="text" class="form-control" id="postal">
-    </div>
+        <div class="form-group">
+            <label for="region" >Region</label>
+            <input #region="ngModel" ngModel [(ngModel)]="c.Region" name="region" type="text" class="form-control" id="region">
+        </div>
 
-    <div class="form-group">
-        <label for="country" >Country</label>
-        <input #country="ngModel" ngModel [(ngModel)]="c.Country" name="country" type="text" class="form-control" id="country">
-    </div>
+        <div class="form-group">
+            <label for="postal" >Postal Code</label>
+            <input #postal="ngModel" ngModel [(ngModel)]="c.PostalCode" name="postal" type="text" class="form-control" id="postal">
+        </div>
 
-    <div class="form-group">
-        <label for="phone" >Phone</label>
-        <input #phone="ngModel" ngModel [(ngModel)]="c.Phone" name="phone" type="text" class="form-control" id="phone">
-    </div>
+        <div class="form-group">
+            <label for="country" >Country</label>
+            <input #country="ngModel" ngModel [(ngModel)]="c.Country" name="country" type="text" class="form-control" id="country">
+        </div>
 
-    <div class="form-group">
-        <label for="fax" >Fax</label>
-        <input #fax="ngModel" ngModel [(ngModel)]="c.Fax" name="fax" type="text" class="form-control" id="fax">
-    </div>
+        <div class="form-group">
+            <label for="phone" >Phone</label>
+            <input #phone="ngModel" ngModel [(ngModel)]="c.Phone" name="phone" type="text" class="form-control" id="phone">
+        </div>
 
-    
-  </form>
+        <div class="form-group">
+            <label for="fax" >Fax</label>
+            <input #fax="ngModel" ngModel [(ngModel)]="c.Fax" name="fax" type="text" class="form-control" id="fax">
+        </div>
+
+        <div class="form-group">
+            <label for="terms">Terms</label>
+            <select #terms="ngModel" [(ngModel)]="c.Terms" name="terms" id="terms" class="form-control" >
+              <option value="0">None</option>
+              <option value="5">5 Days</option>
+              <option value="10">10 Days</option>
+              <option value="15">15 Days</option>
+              <option value="30">30 Days</option>
+              <option value="60">60 Days</option>
+            </select>
+        </div>   
+        <button [disabled]="!f.valid" class="btn btn-primary">Save</button>
+    </form>
+  </div>
 </div>

@@ -13,6 +13,12 @@ export class CustomerService {
     this._url = configService.getApiURI();
   }
 
+  create(body) {
+    return this.http.post(this._url + 'CustomerLists', body)
+    .do(this.logResponse)
+    .map((res: Response) => res.json());
+  }
+
   getAll() {
   return this.http.get(this._url + 'CustomerLists')
    .do(this.logResponse)
@@ -21,6 +27,11 @@ export class CustomerService {
 
   private logResponse(res: Response) {
     console.log(res);
+  }
+
+  delete(pid) {
+    this.http.delete(this._url + 'CustomerLists/' + pid)
+    .subscribe((res: Response) => res.json());
   }
 
 }

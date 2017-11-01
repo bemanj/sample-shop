@@ -47,9 +47,14 @@ itemCount: number;
     if (!this.tableResource) {
       return;
     }
-
+    // console.log('reload happened');
     this.tableResource.query(params)
       .then(items => this.items = items);
+  }
+
+  remove(item) {
+    // console.log(item.ProductId);
+    this.customerservice.delete(item.CustomerID);
   }
 
 }
