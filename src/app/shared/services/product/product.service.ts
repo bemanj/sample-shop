@@ -9,7 +9,7 @@ export class ProductService {
 
   private _url: string;
 
-  constructor(private http: Http, private configService: ConfigService) { 
+  constructor(private http: Http, private configService: ConfigService) {
     this._url = configService.getApiURI();
   }
 
@@ -31,20 +31,20 @@ export class ProductService {
     console.log(res);
   }
 
-  get(inventoryId) {
-    return this.http.get(this._url + 'InventoryView/' + inventoryId)
+  getById(pid) {
+    return this.http.get(this._url + 'ProductOnes/' + pid)
     .do(this.logResponse)
     .map((res: Response) => res.json());
   }
 
-  // update(inventoryId, inventory) {
-  //   this.http.put(this._url + 'SalesOrderDetails/' + inventoryId,inventory)
-  //   .subscribe((res: Response) => res.json());;
-  // }
+  delete(pid) {
+    this.http.delete(this._url + 'ProductOnes/' + pid)
+    .subscribe((res: Response) => res.json());
+  }
 
-  // delete(inventoryId) {
-  //   return this.http.delete(this._url + 'SalesOrderDetails/' + inventoryId)
-  //   .do(this.logResponse)
-  //   .map((res: Response) => res.json());;
-  // }
+  update(pid, pbody) {
+    this.http.put(this._url + 'ProductOnes/' + pid, pbody)
+    .subscribe((res: Response) => res.json());
+  }
+
 }

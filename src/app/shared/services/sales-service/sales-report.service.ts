@@ -10,7 +10,7 @@ export class SalesReportService {
   private _url: string;
   private name;
 
-  constructor(private http: Http, private configService: ConfigService) { 
+  constructor(private http: Http, private configService: ConfigService) {
     this._url = configService.getApiURI();
   }
 
@@ -21,33 +21,33 @@ export class SalesReportService {
         .map((res: Response) => res.json());
       }
 
-  update(soid, sodata) { 
+  update(soid, sodata) {
     return this.http.put(this._url + 'SalesOrderHeader/' + soid, sodata)
     .do(this.logResponse)
     .map((res: Response) => res.json());
   }
-  
+
   // sales orders
-  getAllSO() { 
+  getAllSO() {
          return this.http.get(this._url + 'SalesOrderHeaders/')
         .do(this.logResponse)
         .map((res: Response) => res.json());
   }
 
   // sales orders
-  getfSO(id) { 
+  getfSO(id) {
     return this.http.get(this._url + 'SalesOrderHeader/' + id)
    .do(this.logResponse)
    .map((res: Response) => res.json());
 }
 
-getTotalSalesOfTheDay() { 
+getTotalSalesOfTheDay() {
   return this.http.get(this._url + 'SalesReport/')
  .do(this.logResponse)
  .map((res: Response) => res.json());
 }
 
-  getAllTotalSales() { 
+  getAllTotalSales() {
     return this.http.get(this._url + 'SalesReport/')
    .do(this.logResponse)
    .map((res: Response) => res.json());
@@ -58,6 +58,7 @@ getTotalSalesOfTheDay() {
   }
 
   private extractData(res: Response) {
+    // tslint:disable-next-line:no-shadowed-variable
     return (res: Response) => res.json();
   }
 

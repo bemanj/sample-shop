@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class ProductListService {
 
   private _url: string;
-  
+
     constructor(private http: Http, private configService: ConfigService) { 
       this._url = configService.getApiURI();
     }
@@ -18,7 +18,7 @@ export class ProductListService {
         .map((res: Response) => res.json());
       }
 
-  getAll() { 
+  getAll() {
     // console.log(this.http.get(this.url + 'category1'));
   return this.http.get(this._url + 'Product')
   .do(this.logResponse)
@@ -28,7 +28,7 @@ export class ProductListService {
   // .do((res: Response) => console.log(res))
   // .map((res: Response) => res.json())
   }
-  
+
   private logResponse(res: Response) {
     console.log(res);
   }

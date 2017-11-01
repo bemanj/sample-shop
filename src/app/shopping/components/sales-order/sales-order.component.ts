@@ -5,19 +5,19 @@ import { SalesOrder } from './../../../shared/models/sales-order';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { DataTableResource } from 'angular-4-data-table';
-import { Component, OnInit, Input, NgModule } from '@angular/core';
-import 'rxjs/add/operator/take'; 
+import { Component, OnInit, Input, NgModule, OnDestroy } from '@angular/core';
+import 'rxjs/add/operator/take';
 
 @Component({
   selector: 'sales-order',
   templateUrl: './sales-order.component.html',
   styleUrls: ['./sales-order.component.css']
 })
-export class SalesOrderComponent implements OnInit {
+export class SalesOrderComponent implements OnInit, OnDestroy {
   btn = 'New';
   soNumber$ = '';
   data = '';
-  postStatus : any;
+  postStatus: any;
   salesReport: SalesReport[];
   subscription: Subscription;
   tableResource: DataTableResource<SalesReport>;
@@ -26,16 +26,16 @@ export class SalesOrderComponent implements OnInit {
   sonumber;
   soid;
   sodatalist = {};
-  //orderHeader = new SalesOrder();
+  // orderHeader = new SalesOrder();
   orderHeader = {};
   master;
 
   // @Input('category') category;
 
-  constructor(private categorypostservice: CategoryPostService, 
-    private salesreportservice : SalesReportService,
-    private router: Router, 
-    private route: ActivatedRoute) { 
+  constructor(private categorypostservice: CategoryPostService,
+    private salesreportservice: SalesReportService,
+    private router: Router,
+    private route: ActivatedRoute) {
 
       // this.soid = this.route.snapshot.paramMap.get('id');
       // this.salesreportservice.getfSO(this.soid).subscribe(p => {
@@ -43,7 +43,7 @@ export class SalesOrderComponent implements OnInit {
       // });
       this.soid = this.route.snapshot.paramMap.get('id');
       console.log('soid ' + this.soid);
-  } 
+  }
 
 
   update(item) {
@@ -52,41 +52,38 @@ export class SalesOrderComponent implements OnInit {
 
       console.log('coy ' + item.Company);
 
-      var date = new Date();
+      const date = new Date();
 
-      var sodata = {
+      const sodata = {
         SalesOrderID: this.soid,
         Customer: item.Customer,
-        TaxAmt: item.TaxAmt,//orderHeader.soTaxAmt,
-        Freight: item.Freight,//orderHeader.soFreight,
-        Comment: item.Comment,//orderHeader.soComment,
+        TaxAmt: item.TaxAmt, // orderHeader.soTaxAmt,
+        Freight: item.Freight, // orderHeader.soFreight,
+        Comment: item.Comment, // orderHeader.soComment,
         OrderDate: date,
         ModifiedDate: date
-      }
+      };
       console.log(sodata);
       this.salesreportservice.update(this.soid, sodata)
       .subscribe();
         // console.log('update so' + this.orderHeader.SalesOrderID)
     }
-  
 
-  print(id){
+  print(id) {
     this.router.navigate(['/print-form/', id]);
   }
 
     getSalesReport() {
-      
     }
 
      ngOnInit() {
-      
       this.salesreportservice.getfSO(this.soid).take(1).subscribe(p => {
-        this.orderHeader = p
-        console.log(this.orderHeader)
-      });       
+        this.orderHeader = p;
+        console.log(this.orderHeader);
+      });
     }
 
-    ngOnDestroy(){
+    ngOnDestroy() {
       // this.subscription.unsubscribe();
     }
 }

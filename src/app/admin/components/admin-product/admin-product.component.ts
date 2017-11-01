@@ -2,7 +2,7 @@ import { ProductList } from './../../../shared/models/product-list';
 import { ProductService } from './../../../shared/services/product/product.service';
 import { Observable } from 'rxjs/Observable';
 import { Product } from '../../../shared/models/product';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { DataTableResource } from 'angular-4-data-table';
 import 'rxjs/add/operator/switchMap';
@@ -24,6 +24,7 @@ export class AdminProductComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
+    private router: Router
   ) {
   }
 
@@ -54,6 +55,16 @@ export class AdminProductComponent implements OnInit {
 
     this.tableResource.query(params)
       .then(items => this.items = items);
+  }
+
+  edit(item) {
+    this.router.navigate(['/admin/products/' + item.ProductId]);
+  }
+
+  remove(item) {
+    // console.log(item.ProductId);
+    this.productService.delete(item.ProductId);
+    this.populateProducts();
   }
 
 }
