@@ -1,3 +1,4 @@
+import { CategoryPostService } from './../../../shared/services/category/category-post.service';
 import { Subscription } from 'rxjs/Subscription';
 import { DataTableResource } from 'angular-4-data-table';
 import 'rxjs/add/operator/take';
@@ -18,7 +19,8 @@ export class ProductFormComponent implements OnInit {
   testlabel = 'sample' ;
 
   constructor(private productservice: ProductService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private categoryservice: CategoryPostService
   ) {
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id) {

@@ -10,22 +10,18 @@ export class CategoryPostService {
 
   private _url: string;
   private name;
-  
-  constructor(private http: Http, private configService: ConfigService) { 
+
+  constructor(private http: Http, private configService: ConfigService) {
     this._url = configService.getApiURI();
   }
-  getAll() { 
-        // console.log(this.http.get(this.url + 'category1'));
-     return this.http.get(this._url + 'category1')
+
+  getAll() {
+     return this.http.get(this._url + 'View_Category')
       .do(this.logResponse)
       .map((res: Response) => res.json());
-      // .map((res: Response) => console.log(res.json()));
-      // .map(this.extractData)
-      // .do((res: Response) => console.log(res))
-      // .map((res: Response) => res.json())
   }
 
-  
+
 
   private logResponse(res: Response) {
     console.log(res);
