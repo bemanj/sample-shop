@@ -16,13 +16,13 @@ export class SalesReportService {
 
   create(body) {
     // console.log(body);
-        return this.http.post(this._url + 'SalesOrderHeader/', body)
+        return this.http.post(this._url + 'SalesOrderHeaders/', body)
         .do(this.logResponse)
         .map((res: Response) => res.json());
       }
 
   update(soid, sodata) {
-    return this.http.put(this._url + 'SalesOrderHeader/' + soid, sodata)
+    return this.http.put(this._url + 'SalesOrderHeaders/' + soid, sodata)
     .do(this.logResponse)
     .map((res: Response) => res.json());
   }
@@ -36,7 +36,7 @@ export class SalesReportService {
 
   // sales orders
   getfSO(id) {
-    return this.http.get(this._url + 'SalesOrderHeader/' + id)
+    return this.http.get(this._url + 'SalesOrderHeaders/' + id)
    .do(this.logResponse)
    .map((res: Response) => res.json());
 }
