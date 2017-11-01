@@ -28,7 +28,7 @@ export class AdminProductComponent implements OnInit {
   ) {
   }
 
-  async ngOnInit() {
+  ngOnInit() {
     this.populateProducts();
   }
 

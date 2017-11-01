@@ -1,3 +1,68 @@
+
 <p>
-  admin-customer works!
-</p>
+    <a routerLink="/admin/customers/new" class="btn btn-primary">New Customer</a>
+  </p>
+  
+  <data-table
+  [items]="items"
+  [itemCount]="itemCount"
+  (reload)="reloadItems($event)">
+  
+  <data-table-column
+  [property]="'CompanyName'"  
+  [header]="'Company'"
+  [sortable]="true"
+  [resizable]="true"
+  >
+  </data-table-column>
+  
+  <data-table-column
+  [property]="'ContactName'"  
+  [header]="'Contact'"
+  [sortable]="true"
+  [resizable]="true"
+  >
+  </data-table-column>
+  
+  <data-table-column
+  [property]="'City'"  
+  [header]="'City'"
+  [sortable]="true"
+  [resizable]="true"
+  >
+  </data-table-column>
+  
+  <data-table-column
+  [property]="'Phone'"  
+  [header]="'Phone'"
+  [sortable]="true"
+  [resizable]="true"
+  >
+  </data-table-column>
+
+  <data-table-column
+  [property]="'Fax'"  
+  [header]="'Fax'"
+  [sortable]="true"
+  [resizable]="true"
+  >
+  </data-table-column>
+  
+  <data-table-column
+  [property]="'Terms'"  
+  [header]="'Terms'"
+  [sortable]="true"
+  [resizable]="true"
+  >
+  </data-table-column>
+  
+    <data-table-column
+    [property]="'CustomerID'"  
+  >
+    <ng-template #dataTableCell let-item="item">
+      <button (click)='edit(item)'>Edit</button>
+      <button (click)='remove(item)'>Remove</button>
+    </ng-template>
+  </data-table-column>
+  
+  </data-table>
