@@ -1,25 +1,22 @@
-import { ConfigService } from './services/config/config.service';
-import { OrderDetailService } from './services/order/order-detail.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DataTableModule } from 'angular-4-data-table/dist';
-// import { AngularFireAuthModule } from 'angularfire2/auth';
-// import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import { CustomFormsModule } from 'ng2-validation';
 
-// import { ProductCardComponent } from './components/product-card/product-card.component';
-// import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
 import { AuthGuard } from './services/auth/auth-guard.service';
 import { AuthService } from './services/auth/auth.service';
 import { CategoryPostService } from './services/category/category-post.service';
 import { CategoryService } from './services/category/category.service';
+import { ConfigService } from './services/config/config.service';
+import { CustomerService } from './services/customer/customer.service';
 import { InventoryListService } from './services/inventory/inventory-list.service';
+import { OrderDetailService } from './services/order/order-detail.service';
 import { OrderService } from './services/order/order.service';
 import { PrintService } from './services/print/print.service';
 import { ProductListService } from './services/product/product-list.service';
@@ -28,6 +25,10 @@ import { SalesReportService } from './services/sales-service/sales-report.servic
 import { ShoppingCartService } from './services/shopping/shopping-cart.service';
 import { UserService } from './services/user/user.service';
 
+// import { AngularFireAuthModule } from 'angularfire2/auth';
+// import { AngularFireDatabaseModule } from 'angularfire2/database';
+// import { ProductCardComponent } from './components/product-card/product-card.component';
+// import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -66,6 +67,7 @@ import { UserService } from './services/user/user.service';
     AuthGuard,
     ConfigService,
     UserService,
+    CustomerService,
     CategoryService,
     CategoryPostService,
     PrintService,

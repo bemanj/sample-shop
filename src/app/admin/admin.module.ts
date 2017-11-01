@@ -1,11 +1,12 @@
-import { ProductFormComponent } from './components/product-form/product-form.component';
-import { AdminProductComponent } from './components/admin-product/admin-product.component';
-import { RouterModule } from '@angular/router';
-import { DataTableModule } from 'angular-4-data-table';
-import { SharedModule } from './../shared/shared.module';
-import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
+import { SharedModule } from './../shared/shared.module';
+import { AdminCustomerComponent } from './components/admin-customer/admin-customer.component';
+import { AdminProductComponent } from './components/admin-product/admin-product.component';
+import { CustomerFormComponent } from './components/customer-form/customer-form.component';
+import { CustomerListComponent } from './components/customer-list/customer-list.component';
+import { ProductFormComponent } from './components/product-form/product-form.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,10 @@ import { CommonModule } from '@angular/common';
       {
         path: 'admin/products',
         component: AdminProductComponent,
+      },
+      {
+        path: 'admin/customers',
+        component: AdminCustomerComponent,
       },
       // {
       //   path: 'admin/product-list',
@@ -40,6 +45,9 @@ import { CommonModule } from '@angular/common';
     ProductFormComponent,
     // ProductListComponent,
     AdminProductComponent,
+    CustomerListComponent,
+    CustomerFormComponent,
+    AdminCustomerComponent,
     // AdminOrdersComponent,
     // ProductListComponent,
   ]
