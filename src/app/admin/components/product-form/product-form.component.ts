@@ -37,14 +37,15 @@ export class ProductFormComponent implements OnInit {
       // console.log('coy ' + p.Company);
 
       const newproduct = {
-        CategoryID: 1,
+        CategoryID: p.category,
         ProductTitle: p.ProductTitle,
         ReorderLevel: p.ReorderLevel,
         Discontinued: p.Discontinued
       };
 
       const updatedproduct = {
-        CategoryID: 1,
+        ProductId: this.id,
+        CategoryID: p.category,
         ProductTitle: p.ProductTitle,
         ReorderLevel: p.ReorderLevel,
         Discontinued: p.Discontinued
@@ -60,6 +61,9 @@ export class ProductFormComponent implements OnInit {
     }
 
     ngOnInit() {
+      this.categoryservice.getAll().subscribe(c => {
+        this.categories$ = c;
+      });
     }
 
 }

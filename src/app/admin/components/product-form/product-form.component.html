@@ -29,7 +29,7 @@
                     <select #Discontinued="ngModel" [(ngModel)]="p.Discontinued" name="Discontinued" id="Discontinued" class="form-control" required>
                       <option value=""></option>
                       <option value="1">Yes</option>
-                      <option value="0" selected>No</option>
+                      <option value="0">No</option>
                     </select>
                     <div class="alert alert-danger" *ngIf="Discontinued.touched && Discontinued.invalid">
                       Discontinued is required.
@@ -40,18 +40,18 @@
           </div>
           
         
-        <!-- <div class="form-group">
+        <div class="form-group">
           <label for="category">Category</label>
-          <select #category="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-control" >
+          <select #category="ngModel" [(ngModel)]="p.CategoryID" name="category" id="category" class="form-control" >
             <option value=""></option>
-            <option *ngFor="let c of categories$ | async" [value]="c.$key">
-              {{ c.name }}
+            <option *ngFor="let c of categories$" [value]="c.CategoryID">
+              {{ c.CategoryName }}
             </option>
           </select>
            <div class="alert alert-danger" *ngIf="category.touched && category.invalid">
             Category is required.
           </div> 
-        </div>    -->
+        </div>   
 
         <!-- <div class="form-group">
           <label for="imageUrl">Image URL</label>
