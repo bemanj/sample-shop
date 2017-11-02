@@ -13,4 +13,4 @@ export interface CustomerList {
     Phone: string;
     Fax: string;
     Terms: number;
-  }
+}

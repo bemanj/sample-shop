@@ -1,3 +1,5 @@
+import { CustomerService } from './../../../shared/services/customer/customer.service';
+import { CustomerList } from './../../../shared/models/customer';
 import { CategoryPostService } from './../../../shared/services/category/category-post.service';
 import { SalesReportService } from './../../../shared/services/sales-service/sales-report.service';
 import { SalesReport } from './../../../shared/models/sales-report';
@@ -29,11 +31,14 @@ export class SalesOrderComponent implements OnInit, OnDestroy {
   // orderHeader = new SalesOrder();
   orderHeader = {};
   master;
+  customer: CustomerList[];
+  customer$;
 
   // @Input('category') category;
 
   constructor(private categorypostservice: CategoryPostService,
     private salesreportservice: SalesReportService,
+    private customerservice: CustomerService,
     private router: Router,
     private route: ActivatedRoute) {
 
@@ -42,6 +47,9 @@ export class SalesOrderComponent implements OnInit, OnDestroy {
       //   this.orderHeader= p
       // });
       this.soid = this.route.snapshot.paramMap.get('id');
+      this.customerservice.getAll().subscribe(c => {
+        this.customer = c;
+      });
       console.log('soid ' + this.soid);
   }
 
@@ -71,6 +79,13 @@ export class SalesOrderComponent implements OnInit, OnDestroy {
 
   print(id) {
     this.router.navigate(['/print-form/', id]);
+  }
+
+  filter(query: string) {
+    const filteredCustomers = (query) ?
+      this.customer.filter(c => c.CompanyName.toLowerCase().includes(query.toLowerCase())) :
+      this.customer;
+
   }
 
     getSalesReport() {

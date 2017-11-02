@@ -15,10 +15,25 @@
       <div class="form-group">
           <label for="Customer">Customer</label>
           <input #Customer="ngModel" ngModel [(ngModel)]="orderHeader.Customer" name="Customer" id="Customer" type="text" class="form-control">
+          
+          <input 
+          #query
+          (keyup)="filter(query.value)"
+          type="text" class="form-control" placeholder="Search...">
+
+          <select #category="ngModel" [(ngModel)]="p.CategoryID" name="category" id="category" class="form-control" >
+              <option value=""></option>
+              <option *ngFor="let c of customer$" [value]="c.CustomerID">
+                {{ c.CompanyName }}
+              </option>
+            </select>
           <div class="alert alert-danger" *ngIf="Customer.touched && Customer.invalid">
             Customer is required.
           </div>
       </div>
+      
+
+
 
       <!-- <div class="form-group">
           <label for="soTaxAmt">Contact Name</label>
