@@ -68,8 +68,9 @@ export class SalesOrderComponent implements OnInit, OnDestroy {
         TaxAmt: item.TaxAmt, // orderHeader.soTaxAmt,
         Freight: item.Freight, // orderHeader.soFreight,
         Comment: item.Comment, // orderHeader.soComment,
-        OrderDate: date,
-        ModifiedDate: date
+        OrderDate: date, // create alternative that not includes udpate of order date column
+        ModifiedDate: date,
+        OnlineOrderFlag: 'Call'
       };
       console.log(sodata);
       this.salesreportservice.update(this.soid, sodata)

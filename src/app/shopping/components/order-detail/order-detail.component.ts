@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { OrderDetailList } from '../../../shared/models/order-detail';
 import { SalesOrder } from './../../../shared/models/sales-order';
 import { DataTableResource } from 'angular-4-data-table';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './order-detail.component.html',
   styleUrls: ['./order-detail.component.css']
 })
-export class OrderDetailComponent implements OnInit {
+export class OrderDetailComponent implements OnInit, OnDestroy {
   orderdetails: OrderDetailList;
   subscription: Subscription;
   tableResource: DataTableResource<OrderDetailList>;
@@ -28,6 +28,7 @@ export class OrderDetailComponent implements OnInit {
     this.route.paramMap
     .subscribe(params => {
       const id = params.get('id');
+      console.log(id);
       this.subscription = this.orderdetailList.get(id)
       .subscribe(orders => {
         this.orderdetails = orders;
@@ -45,13 +46,14 @@ export class OrderDetailComponent implements OnInit {
   }
 
   reloadItems(params) {
-    if (!this.tableResource) return;
-
+    console.log(params);
+    if (!this.tableResource) { return; }
+    console.log('after');
     this.tableResource.query(params)
-      .then(items => this.items = items);    
+      .then(items => this.items = items);
   }
 
-  remove(item){
+  remove(item) {
     console.log(item);
     this.orderdetailList.delete(item.SODetailsID).subscribe();
     // this.router.navigate(['/sales-order', item]);
@@ -65,7 +67,7 @@ export class OrderDetailComponent implements OnInit {
 
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 }

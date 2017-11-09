@@ -16,7 +16,7 @@
           <label for="Customer">Customer</label>
           <input #Customer="ngModel" ngModel [(ngModel)]="orderHeader.Customer" name="Customer" id="Customer" type="text" class="form-control">
           
-          <input 
+          <!-- <input 
           #query
           (keyup)="filter(query.value)"
           type="text" class="form-control" placeholder="Search...">
@@ -29,7 +29,7 @@
             </select>
           <div class="alert alert-danger" *ngIf="Customer.touched && Customer.invalid">
             Customer is required.
-          </div>
+          </div> -->
       </div>
       
 

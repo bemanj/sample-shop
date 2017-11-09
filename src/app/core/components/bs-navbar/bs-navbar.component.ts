@@ -32,14 +32,14 @@ export class BsNavbarComponent implements OnInit {
     const date = new Date();
 
     const sodata = {
-      Customer: '',
+      Customer: '0',
       OnlineOrderFlag: '',
       SubTotal: 0, // orderHeader.soSubTotal,
       TaxAmt: 0, // orderHeader.soTaxAmt,
       Freight: 0, // orderHeader.soFreight,
       TotalDue: 0,
       Comment: 'test', // orderHeader.soComment,
-      Fulfilled:''
+      Fulfilled: ''
     };
 
   this.salesreportservice.create(sodata).subscribe(data => {

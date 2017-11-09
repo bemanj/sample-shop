@@ -6,7 +6,7 @@ import { SalesOrder } from './../../../shared/models/sales-order';
 import { DataTableResource } from 'angular-4-data-table';
 import { InventoryListService } from './../../../shared/services/inventory/inventory-list.service';
 import { InventoryList } from './../../../shared/models/inventory-list';
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, OnDestroy, Input} from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './product-selection.component.html',
   styleUrls: ['./product-selection.component.css']
 })
-export class ProductSelectionComponent implements OnInit {
+export class ProductSelectionComponent implements OnInit, OnDestroy {
   inventory: InventoryList;
   subscription: Subscription;
   tableResource: DataTableResource<InventoryList>;
@@ -31,7 +31,7 @@ export class ProductSelectionComponent implements OnInit {
   constructor(private inventoryList: InventoryListService,
     private orderdetailService: OrderDetailService,
     private route: ActivatedRoute,
-    private router: Router) { 
+    private router: Router) {
     this.subscription = this.inventoryList.getAll()
     .subscribe(inventory => {
       this.inventory = inventory;
@@ -48,22 +48,20 @@ export class ProductSelectionComponent implements OnInit {
   }
 
   reloadItems(params) {
-    if (!this.tableResource) return;
+    if (!this.tableResource) { return; }
 
     this.tableResource.query(params)
-      .then(items => this.items = items);    
+      .then(items => this.items = items);
   }
 
-   save(item) {
+  save(item) {
 
-    
     if (item.OrderQuantity > 0 && !isNaN(item.OrderQuantity)) {
-      
-      var postdata;
+      let postdata;
       // console.log('Amount :' + item.Price * item.OrderQuantity);
       this.route.paramMap
       .subscribe(params => {
-        let id = params.get('id');
+        const id = params.get('id');
 
         this.totalAmount = item.Price * item.OrderQuantity;
 
@@ -78,31 +76,23 @@ export class ProductSelectionComponent implements OnInit {
           , Quantity: item.OrderQuantity
           , Discount: 0
           , TotalAmount: this.totalAmount
-        }
+        };
+
         console.log(postdata);
         this.orderdetailService.create(postdata).subscribe(data => this.postData$ = data);
-        this.router.navigate(['/sales-order', id]);
+        // this.router.navigate(['/sales-order', id]);
       });
-
-     
-      
       // this.router.navigate(['/order-detail']);
 
-    }
-    else{
+    } else {
       alert('Invalid quantity :' + item.OrderQuantity);
     }
-
-    
-
-      
-    }
+  }
 
   ngOnInit() {
   }
 
-  
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 }

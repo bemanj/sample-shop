@@ -1,6 +1,6 @@
 import { SalesReportService } from './../services/sales-service/sales-report.service';
 export class SalesOrder {
-    $id: number;  
+    $id: number;
     SONumber: string;
     SalesOrderID: number;
     Customer: string;
